@@ -7,9 +7,9 @@ function Nav() {
   return (
     <div>
       <ul id="dropdown1" className="dropdown-content">
-        <li><a href="#!">Login</a></li>
+        <li><Link to="/login">Login</Link></li>
         <li className="divider"></li>
-        <li><a href="#!">Register</a></li>
+        <li><Link to="/register">Register</Link></li>
       </ul>
 
       {/* <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
