@@ -1,6 +1,11 @@
 import React, {Component} from "react"
+import Auth from "../../Auth/Auth"
+// const auth = new Auth();
+// auth.login();
 
 class Login extends Component {
+
+    
     render() {
         return (
             <div className="container">
