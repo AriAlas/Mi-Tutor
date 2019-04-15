@@ -13,8 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // Require routes here
-var Users = require("./routes/Users");
-app.use("/users", Users);
+
 
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "./client/build/index.html"));

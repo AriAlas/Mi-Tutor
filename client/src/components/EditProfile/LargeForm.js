@@ -1,6 +1,11 @@
 import React from "react";
 
-export const LargeForm = () => {
+
+
+export class LargeForm extends React.Component {
+
+
+    render(){
     return (
 
         <div className="row">
@@ -80,5 +85,6 @@ export const LargeForm = () => {
         </div>
 
     )
+}
 }
 
