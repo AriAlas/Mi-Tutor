@@ -1,6 +1,6 @@
 //This should be used for exporting stateless components
 
-import React from "react";
+import React from "./node_modules/react";
 
 
 export const FormInput = (props) =>(
