@@ -7,6 +7,7 @@ import TutorsMap from "./pages/TutorsMap"
 import Tutors from "./components/Tutors";
 import Profile from "./components/Profile";
 import Login from "./components/Login";
+import Register from "./components/Register";
 
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
             <Route exact path="/tutors" component={Tutors} />
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            
 
           </Switch>
         </div>

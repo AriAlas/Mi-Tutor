@@ -13,7 +13,7 @@ class Tutors extends Component {
                     <div className="container">
                     <h5>Want to become a Tutor?</h5>
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero eius architecto iste quis corporis soluta saepe in id tenetur nostrum!</p>
-                    <a className="waves-effect waves-light btn">SignUp</a>
+                    <Link to="/register" className="waves-effect waves-light btn">Sign Up</Link>
                     </div>
                 </div>
             </div>

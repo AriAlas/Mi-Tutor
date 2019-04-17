@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import { login } from "../UserFuntions";
+import { register } from "../UserFuntions";
 import Nav from "../Nav";
 
-class Login extends Component {
+class Register extends Component {
     constructor() {
         super();
         this.state = {
+            first_name: "",
+            last_name: "",
             email: "",
-            password: "",
-            message: ""
+            password: ""
         }
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
@@ -19,15 +20,16 @@ class Login extends Component {
     onSubmit(e) {
         e.preventDefault()
         const user = {
+            first_name: this.state.first_name,
+            last_name: this.state.last_name,
             email: this.state.email,
             password: this.state.password
         }
-        login(user).then(res => {
-            if (res) {
-                this.props.history.push("/profile");
-            }
-            else{this.setState({message:"Username or password not found"})}
-        })
+        register(user).then(res => {
+            
+                this.props.history.push("/login");
+            
+        }).catch(err => console.log(err));
     }
     render() {
         return (
@@ -40,7 +42,28 @@ class Login extends Component {
 
                         {/* This is the login form */}
                         <form className="col s4" noValidate onSubmit={this.onSubmit}>
-                            <h4>Sign In</h4>
+                            <h4>Sign Up</h4>
+                            <div className="row">
+                                <div className="input-field col s12">
+                                    <input type="text"
+                                        id="first_name"
+                                        name="first_name"
+                                        value={this.state.first_name}
+                                        onChange={this.onChange} />
+
+                                    <label htmlFor="first_name">First Name</label>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="input-field col s12">
+                                    <input type="text"
+                                        id="last_name"
+                                        name="last_name"
+                                        value={this.state.last_name}
+                                        onChange={this.onChange} />
+                                    <label htmlFor="last_name">Last Name</label>
+                                </div>
+                            </div>
                             <div className="row">
                                 <div className="input-field col s12">
                                     <input type="email"
@@ -65,7 +88,7 @@ class Login extends Component {
                             <button 
                             className="btn waves-effect waves-light" 
                             type="submit" 
-                            name="action">Sign In
+                            name="action">Sign Up
                                 <i className="material-icons right">send</i>
                             </button>
 
@@ -78,4 +101,4 @@ class Login extends Component {
         )
     }
 }
-export default Login;
+export default Register;
