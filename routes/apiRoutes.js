@@ -1,2 +1,3 @@
-// api routes to our api
-// ex: app.get api.tutors
+//Express endpoints
+//this.app.post(...)
+//bulid this first- work backend to frontend

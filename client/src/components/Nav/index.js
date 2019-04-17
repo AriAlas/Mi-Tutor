@@ -26,8 +26,7 @@ function Nav() {
       <div className="nav-wrapper">
         <Link to="/" className="brand-logo">MiTutor</Link>
         <ul className="right hide-on-med-and-down">
-          <li><a href="badges.html">About</a></li>
-
+          <li><Link to="/about">About</Link></li>
           <li><a className="dropdown-trigger" href="#!" data-target="dropdown1">Tutor<i className="material-icons right">arrow_drop_down</i></a></li>
         </ul>
       </div>

@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import About from "./pages/About";
+import TutorsMap from "./pages/TutorsMap"
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/about" component={About} />
+            <Route exact path="/tutorsmap" component={TutorsMap}/>
           </Switch>
         </div>
       </Router>
