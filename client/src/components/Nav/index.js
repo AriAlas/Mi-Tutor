@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 class Nav extends React.Component {
   logOut(e){
     e.preventDefault();
-    localStorage.removeItem("usertoken");
+    localStorage.removeItem("userToken");
     this.props.history.push("/");
   }
 render () {
