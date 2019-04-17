@@ -1,2 +1,3 @@
-DROP DATABASE IF EXISTS final_project;
+
 CREATE DATABASE final_project;
+USE final_project;
