@@ -2,43 +2,48 @@ import React from "react";
 import { Link } from "react-router-dom"
 
 
-function Nav() {
+class Nav extends React.Component {
+  logOut(e){
+    e.preventDefault();
+    localStorage.removeItem("usertoken");
+    this.props.history.push("/");
+  }
+render () {
+// this is the navbar when the user is not logged in
+  const loginLink = (
 
+          <li><Link to="/login">Login</Link></li>
+      
+ 
+  )
+// this is the nav bar when the user is logged in
+    const userLink = (
+     
+          <li><a href="" onClick={this.logOut.bind(this)}>LogOut</a></li>
+        
+    )
   return (
     <div>
-      <ul id="dropdown1" className="dropdown-content">
-        <li><Link to="/login">Login</Link></li>
-        <li className="divider"></li>
-        <li><Link to="/register">Register</Link></li>
-      </ul>
-
-      {/* <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div className="nav-wrapper">
-      <Link to="/" className="navbar-brand" href="/">
-        MiTutor
-        </Link>
-        <ul class="right hide-on-med-and-down">
-        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Tutor</a></li>
-        </ul>
-        </div>
-    </nav> */}
     <nav>
       <div className="nav-wrapper">
         <Link to="/" className="brand-logo">MiTutor</Link>
         <ul className="right hide-on-med-and-down">
+          <li><Link to="/">Home</Link></li>
           <li><Link to="/about">About</Link></li>
-          <li><a className="dropdown-trigger" href="#!" data-target="dropdown1">Tutor<i className="material-icons right">arrow_drop_down</i></a></li>
-        </ul>
+          <li><Link to="/tutors">Tutors</Link></li>
+          {localStorage.usertoken ? userLink : loginLink}
+          </ul>
       </div>
       </nav>
     </div>
-    
 
   )
 
 
 
 }
+}
+
 
 
 

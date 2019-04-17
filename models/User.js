@@ -1,5 +1,20 @@
+
+
 module.exports = function(sequelize, DataTypes) {
-    var Tutor = sequelize.define("Tutor", {
+    var User = sequelize.define("User", {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
+        },
+        first_name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        last_name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -13,14 +28,7 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: false
         },
-        first_name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        last_name: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
+        
         age: {
             type: DataTypes.INTEGER,
             allowNull: true
@@ -57,6 +65,13 @@ module.exports = function(sequelize, DataTypes) {
               isUrl: true,
             },
         },
+        created: {
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW
+        }
+    },
+    {
+        timestamps: false
     });
-    return Tutor;
+    return User;
 };
