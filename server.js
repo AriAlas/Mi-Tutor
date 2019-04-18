@@ -4,7 +4,7 @@ var app = express();
 var session = require("express-session");
 var PORT = process.env.PORT || 3001;
 var db = require("./models");
-
+var path = require("path");
 
 
 // body parser
@@ -15,12 +15,13 @@ app.use(express.json());
 // Require routes here
 var Users = require("./routes/Users");
 app.use("/users", Users)
-
+var Tutors = require("./routes/apiRoutes");
+app.use("/api", Tutors);
 
 
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./client/build/index.html"));
+    res.sendFile(path.join(__dirname, "./client/public/index.html"));
   });
   
 
