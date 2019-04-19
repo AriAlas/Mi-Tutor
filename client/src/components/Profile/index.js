@@ -16,6 +16,7 @@ class Profile extends Component {
             inperson: "",
             subjects: "",
             profileImage: "",
+            address: ""
 
         }
     }
@@ -31,7 +32,7 @@ class Profile extends Component {
         })
 
         API.getOneTutor(email)
-            .then(tutor => this.setState({ bio: tutor.data.bio, age: tutor.data.age }))
+            .then(tutor => this.setState({ bio: tutor.data.bio, age: tutor.data.age, remote: tutor.data.remote, inperson: tutor.data.inperson, subjects: tutor.data.subjects, profileImage: tutor.data.profileImage, address: tutor.data.address }))
             .catch(err => console.log(err));
 
 
@@ -62,73 +63,87 @@ class Profile extends Component {
 
 
 
-                                <div className="col s4 ">
-                                    <div className="card">
-                                        <div className="card-image">
-                                            <img src="https://via.placeholder.com/150" />
-                                            <span className="card-title black-text">{this.state.first_name}{" "}{this.state.last_name}</span>
-                                            <form action="">
-                                                <div className="file-field">
-                                              
-                                            <a className="btn-floating halfway-fab waves-effect waves-light  light-blue darken-4"><i className="material-icons">edit</i></a>
-                                          
+                            <div className="col s4 ">
+                                <div className="card hoverable">
+                                    <div className="card-image">
+                                        <img src="https://via.placeholder.com/150" />
+                                        <span className="card-title black-text">{this.state.first_name}{" "}{this.state.last_name}</span>
+                                        <form action="">
+                                            <div className="file-field">
+                                                <a className="btn-floating halfway-fab waves-effect waves-light  light-blue darken-4"><i className="material-icons">edit</i></a>
+
                                             </div>
-                                            </form>
-                                        </div>
-                                        {/* <div className="card-content">
-                                            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-                                        </div> */}
+                                        </form>
                                     </div>
                                 </div>
-                        
-
-
-                            <div className="col s4"></div>
-
-                        </div>
-                    </div>
-                </section>
-                <section className="section">
-
-                    <div className="row">
-                        <div className="col s2"></div>
-                        <div className="col s8">
-                            <div className="card-panel white">
-                                <span className="black-text">{this.state.bio}
-                                </span>
                             </div>
+                            <div className="col s4"></div>
                         </div>
-                        <div className="col s2"></div>
                     </div>
-
                 </section>
 
-                <div className="row">
-                    <div className="col s2"></div>
-                    <div className="col s4">
-                        <div className="card-panel white">
-                            <span className="black-text">I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita numquam illum officiis, odio consequatur, minima assumenda exercitationem eaque laboriosam earum at aperiam soluta ullam, sit laudantium voluptatem placeat iste natus.
+                {/* This is the BIO Section */}
+                <section className="section">
+                    <div className="container z-depth-1 hoverable">
+
+                        {/* Modal Trigger Button */}
+                        <div className="right-align">
+                            <a className="btn-floating waves-effect waves-light light-blue darken-4"><i class="material-icons">edit</i></a>
+                        </div>
+
+
+                        <div className="row">
+                            <div className="col s1"></div>
+                            <div className="col s10">
+                                <div className="card-panel white">
+                                    {/* <div className="right-align"><a className="btn-floating waves-effect waves-light light-blue darken-4"><i class="material-icons">edit</i></a></div> */}
+
+                                    <span className="black-text"><strong>About me</strong>
+
                                     </span>
+                                    <div class="divider"></div>
+                                    <p>{this.state.bio}</p>
+                                </div>
+                            </div>
+                            <div className="col s1"></div>
                         </div>
-                    </div>
-                    <div className="col s4">
-                        <div className="card-panel white">
-                            <span className="black-text">I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita numquam illum officiis, odio consequatur, minima assumenda exercitationem eaque laboriosam earum at aperiam soluta ullam, sit laudantium voluptatem placeat iste natus.
-                                </span>
+
+
+
+
+                        <div className="row">
+                            <div className="col s2"></div>
+                            <div className="col s4">
+                                <div className="card-panel white">
+                                    {/* <div className="right-align"><a className="btn-floating waves-effect waves-light light-blue darken-4"><i class="material-icons">edit</i></a></div> */}
+                                    <span className="black-text"><strong>Area of knoledge</strong>
+
+                                    </span>
+                                    <div class="divider"></div>
+                                    <p>{this.state.subjects}</p>
+                                </div>
+                            </div>
+                            <div className="col s4">
+                                <div className="card-panel white">
+                                    {/* <div className="right-align"><a className="btn-floating waves-effect waves-light light-blue darken-4"><i class="material-icons">edit</i></a></div> */}
+                                    <span className="black-text"><strong>Personal Information</strong></span>
+                                    <div class="divider"></div>
+                                    <p>Name: {this.state.first_name}{" "}{this.state.last_name}</p>
+                                    <p>Age: {this.state.age}</p>
+                                    <p>Remote sessions: {this.state.remote}</p>
+                                    <p>Presental sessions: {this.state.inperson}</p>
+                                    <p>Address: {this.state.address}</p>
+                                </div>
+                            </div>
+                            <div className="col s2"></div>
                         </div>
+
+
+
                     </div>
-                    <div className="col s2"></div>
-                </div>
-
-
-
-
-
+                </section>
             </div>
+
         )
     }
 }

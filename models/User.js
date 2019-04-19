@@ -40,6 +40,7 @@ module.exports = function(sequelize, DataTypes) {
 
 
         },
+
         inperson: {
             type: DataTypes.BOOLEAN,
             allowNull: true,
@@ -56,6 +57,11 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true,
             defaultValue: ""
 
+
+        },
+        address: {
+            type: DataTypes.STRING,
+            allowNull: true,
 
         },
         profileImage: {
