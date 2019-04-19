@@ -1,10 +1,9 @@
 import React from "react";
 
-function SearchButton() {
+function SearchButton(props) {
   return(
-    <a className="waves-effect waves-light btn-small"><i className="material-icons right">search</i>search</a>
+    <a className="waves-effect waves-light btn-small" type="submit" id="clickSearch" onClick={props.handleFormSubmit}><i className="material-icons right">search</i>search</a>
   );
 }
-console.log("button");
 
 export default SearchButton;

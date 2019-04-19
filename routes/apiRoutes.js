@@ -1,6 +1,3 @@
-//Express endpoints
-//this.app.post(...)
-//bulid this first- work backend to frontend
 var express = require("express");
 var users = express.Router()
 var db = require("../models")

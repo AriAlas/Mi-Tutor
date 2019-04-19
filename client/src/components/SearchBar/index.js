@@ -6,8 +6,7 @@ function SearchBar() {
         <form className="col s12">
           <div className="row">
             <div className="input-field col s3">
-              <input placeholder="Zip Code" id="first_name" type="text" className="validate"></input>
-              <label htmlFor="first_name">Find tutors near you!</label>
+              <input placeholder="Zip Code" id="zipCode" type="text" className="validate"></input>
             </div>
           </div>
         </form>
