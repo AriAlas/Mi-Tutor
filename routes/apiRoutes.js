@@ -11,4 +11,8 @@ users.get("/tutor/:email", (req, res)=>{
         }
     }).then(tutor => res.json(tutor));
 })
+users.put("/tutor/:id", (req, res)=>{
+    db.User.update(req.body,{where:{id:req.params.id}})
+    .then(tutor => res.json(tutor))
+})
 module.exports = users;

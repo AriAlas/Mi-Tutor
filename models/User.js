@@ -51,6 +51,7 @@ module.exports = function(sequelize, DataTypes) {
         subjects: {
             type: DataTypes.STRING,
             allowNull: true
+           
         },
         bio: {
             type: DataTypes.STRING,

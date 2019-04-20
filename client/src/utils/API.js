@@ -5,5 +5,8 @@ import axios from "axios";
 export default {
     getOneTutor: function(email){
         return axios.get("/api/tutor/" + email);
+    },
+    updateTutor: function(id, data){
+        return axios.put("/api/tutor/"+id, data)
     }
 }
