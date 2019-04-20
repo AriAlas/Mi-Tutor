@@ -1,8 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function SearchButton(props) {
+
+
+function SearchButton() {
   return(
-    <a className="waves-effect waves-light btn-small" type="submit" id="clickSearch" onClick={props.handleFormSubmit}><i className="material-icons right">search</i>search</a>
+    <Link to="/search-results">
+    <button className="btn waves-effect waves-light" type="submit" id="clickSearch" name="action">search
+      <i className="material-icons right">search</i>
+    </button>
+    </Link>
   );
 }
 
