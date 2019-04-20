@@ -10,9 +10,9 @@ class Home extends Component {
         <div>
         <Nav />
             <div className="container">
-                <div class="card">
-                <div class="card-content">
-                    <span class="card-title">Find tutors near you!</span>               
+                <div className="card">
+                <div className="card-content">
+                    <span className="card-title">Find tutors near you!</span>               
                     <SearchBar></SearchBar>
                     <SearchButton></SearchButton>
                 </div>
