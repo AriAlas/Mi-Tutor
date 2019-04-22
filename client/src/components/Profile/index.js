@@ -3,6 +3,7 @@ import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
 import API from "../../utils/API"
 import LargeForm from "../EditProfile"
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 class Profile extends Component {
     constructor() {
@@ -13,12 +14,13 @@ class Profile extends Component {
             last_name: "",
             email: "",
             bio: "",
-            age: "",
+            Date_of_birth: "",
             remote: "",
             inperson: "",
             subjects: [],
             profileImage: "",
-            address: ""
+            address: "",
+            lastclickedoption: []
 
         }
     }
@@ -34,50 +36,98 @@ class Profile extends Component {
         })
 
         API.getOneTutor(email)
-            .then(tutor => this.setState({id:tutor.data.id, bio: tutor.data.bio, age: tutor.data.age, remote: tutor.data.remote, inperson: tutor.data.inperson, subjects: tutor.data.subjects, profileImage: tutor.data.profileImage, address: tutor.data.address }))
+            .then(tutor => this.setState({
+                id: tutor.data.id,
+                bio: tutor.data.bio,
+                Date_of_birth: tutor.data.Date_of_birth,
+                remote: tutor.data.remote,
+                inperson: tutor.data.inperson,
+                subjects: tutor.data.subjects ? tutor.data.subjects.split(",") : [],
+                profileImage: tutor.data.profileImage,
+                address: tutor.data.address
+            }))
             .catch(err => console.log(err));
 
     }
     onChangeBio = (e) => {
-      
+
         var value = e.target.value;
-        this.setState({bio:value})
+        this.setState({ bio: value })
     }
     onClickBio = (e) => {
         e.preventDefault();
-        
+
         var id = this.state.id;
 
-      var data ={
-             bio: this.state.bio   
+        var data = {
+            bio: this.state.bio
         }
 
         API.updateTutor(id, data)
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
     }
 
     onChangeSubjects = (e) => {
         var value = e.target.value;
         var subjects = this.state.subjects;
-        console.log(subjects);
-        // subjects.push(value)
-        this.setState({subjects:subjects})
         
+        // console.log(subjects);
+        var index = subjects.indexOf(value);
+        if (index === -1) {subjects.push(value)}
+        console.log("index", index);
+        
+        this.setState({ subjects: subjects, lastclickedoption: value })
+
     }
     onClickSubjects = (e) => {
         e.preventDefault();
 
         var id = this.state.id;
 
+        var mysubjects = this.state.subjects
+
+
         var data = {
-            subjects : this.state.subjects
+            subjects: mysubjects.join(",")
         }
+
         API.updateTutor(id, data)
-        .then(res => console.log(res))
-        .catch(err => console.log(err));
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
 
     }
+
+    onChangePersonal = e => {
+        var name = e.target.name;
+        var value = e.target.value;
+
+        this.setState({[name]:value});
+    }
+    onClickPersonal = e => {
+        e.preventDefault();
+
+        var id = this.state.id;
+
+        var data = {
+            first_name: this.state.first_name,
+            last_name: this.state.last_name,
+            Date_of_birth: this.state.Date_of_birth,
+            remote: this.state.remote,
+            inperson: this.state.inperson,
+            address: this.state.address
+
+        }
+        console.log(data)
+
+        API.updateTutor(id, data)
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+    }
+
+
+    
+
 
 
     render() {
@@ -111,10 +161,10 @@ class Profile extends Component {
                                         <span className="card-title black-text">{this.state.first_name}{" "}{this.state.last_name}</span>
                                         <form action="">
                                             <div className="file-field">
-                                               
+
                                                 <a className="btn-floating halfway-fab waves-effect waves-light  light-blue darken-4" href=""><i className="material-icons">edit</i></a>
-                                                
-                                               
+
+
                                             </div>
                                         </form>
                                     </div>
@@ -150,21 +200,21 @@ class Profile extends Component {
                                             <div className="row">
                                                 <div className="input-field col s12">
 
-                                                    <input id="bio" 
-                                                    type="text" 
-                                                    className="validate" 
-                                                    name="bio"
-                                                    value={this.state.bio}
-                                                    onChange={this.onChangeBio}
+                                                    <input id="bio"
+                                                        type="text"
+                                                        className="validate"
+                                                        name="bio"
+                                                        value={this.state.bio}
+                                                        onChange={this.onChangeBio}
                                                     ></input>
                                                     <label htmlFor="bio">Tell us a little about yourself!</label>
                                                 </div>
                                             </div>
-                                            <button className="btn waves-effect waves-light light-blue darken-4" 
-                                            type="submit" 
-                                            name="action"
-                                            value={this.state.id}
-                                            onClick={this.onClickBio}>Submit
+                                            <button className="btn waves-effect waves-light light-blue darken-4 modal-close"
+                                                type="submit"
+                                                name="action"
+                                                value={this.state.id}
+                                                onClick={this.onClickBio}>Submit
                                                  <i className="material-icons right">send</i>
                                             </button>
 
@@ -207,9 +257,11 @@ class Profile extends Component {
 
                                             <div className="row">
                                                 <div className="input-field col s12">
-                                                    <select multiple id="subjects" 
-                                                    onChange={this.onChangeSubjects} 
-                                                    value={this.state.subjects}>
+                                                    <select multiple 
+                                                        id="subjects"
+                                                        onChange={this.onChangeSubjects}
+                                                        value={this.state.lastclickedoption}
+                                                        >
                                                         <option disabled={true} value="">Choose an option</option>
                                                         <option value="Mathematics">Mathematics</option>
                                                         <option value="Science">Science</option>
@@ -224,17 +276,20 @@ class Profile extends Component {
                                                     <label>What subjects do you feel comfortable teaching?</label>
                                                 </div>
                                             </div>
-                                            <button className="btn waves-effect waves-light light-blue darken-4" 
-                                            type="submit" 
-                                            name="action"
-                                            onClick={this.onClickSubjects}>Submit
-                                                 <i className="material-icons right">send</i>
-                                            </button>
+                                           
 
                                         </form>
 
                                     </div>
+                                    
                                     <div className="modal-footer">
+                                    <button className="btn waves-effect waves-light light-blue darken-4 modal-close"
+                                                type="submit"
+                                                name="action"
+                                                onClick={this.onClickSubjects}>Submit
+                                                 <i className="material-icons right">send</i>
+                                            </button>
+                                            {" "}
                                         <button href="#!" className="modal-close btn waves-effect  light-blue darken-4">Close</button>
                                     </div>
 
@@ -246,7 +301,14 @@ class Profile extends Component {
 
                                 </span>
                                 <div className="divider"></div>
-                                <p>{this.state.subjects}</p>
+                                <ul>
+                                    {this.state.subjects.map(function (subject, i) {
+                                        return (
+                                            <li key ={i} >{subject}</li>
+                                        )
+                                    }
+                                    )}
+                                </ul>
                             </div>
                         </div>
                         <div className="col s4">
@@ -262,26 +324,41 @@ class Profile extends Component {
                                         <form action="">
                                             <div className="row">
                                                 <div className="input-field col s4">
-                                                    <input id="first_name" 
-                                                    type="text" 
-                                                    className="validate" 
-                                                    name="first_name"
-                                                    
-                                                  ></input>
+                                                    <input id="first_name"
+                                                        type="text"
+                                                        className="validate"
+                                                        name="first_name"
+                                                        onChange={this.onChangePersonal}
+                                                        value={this.state.first_name}
+
+                                                    ></input>
                                                     <label htmlFor="first_name">First Name</label>
                                                 </div>
                                                 <div className="input-field col s4">
-                                                    <input id="last_name" type="text" className="validate" name="last_name"></input>
+                                                    <input id="last_name" 
+                                                    type="text" 
+                                                    className="validate" 
+                                                    name="last_name"
+                                                    onChange={this.onChangePersonal}
+                                                    value={this.state.last_name}></input>
                                                     <label htmlFor="last_name">Last Name</label>
                                                 </div>
                                                 <div className="input-field col s4 browser-default">
-                                                    <input type="date" name="bday"></input>
+                                                    <input id="bday" 
+                                                    type="date" 
+                                                    name="bday"
+                                                    onChange={this.onChangePersonal}
+                                                    value={this.state.Date_of_birth}></input>
                                                     <label htmlFor="age">Birthdate</label>
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="input-field col s6">
-                                                    <select name="remote" defaultValue={"default"}>
+                                                    <select 
+                                                    name="remote" 
+                                                    defaultValue={"default"}
+                                                    onChange={this.onChangePersonal}
+                                                    value={this.state.remote}>
                                                         <option disabled={true} value="default">Choose an option</option>
                                                         <option value="1">Yes</option>
                                                         <option value="0">No</option>
@@ -289,7 +366,11 @@ class Profile extends Component {
                                                     <label>Are you available to tutor remotely (online)?</label>
                                                 </div>
                                                 <div className="input-field col s6">
-                                                    <select name="inperson" defaultValue={"default"}>
+                                                    <select 
+                                                    name="inperson" 
+                                                    defaultValue={"default"}
+                                                    onChange={this.onChangePersonal}
+                                                    value={this.state.inperson}>
                                                         <option disabled={true} value="" value="default">Choose an option</option>
                                                         <option value="1">Yes</option>
                                                         <option value="0">No</option>
@@ -299,13 +380,26 @@ class Profile extends Component {
                                             </div>
                                             <div className="row">
                                                 <div className="input-field col s12">
-                                                    <input id="address" type="text" className="validate" name="address"></input>
-                                                    <label htmlFor="address">Address</label>
+                                                <GooglePlacesAutocomplete
+                                                     onSelect={console.log}
+                                                     onSelect={({ description }) => (
+                                                    this.setState({ address: description })
+                                                    )}
+                                                     />
+                                                    {/* <input id="address" 
+                                                    type="text" 
+                                                    className="validate" 
+                                                    name="address"
+                                                    ></input> */}
+                                                    <label htmlFor="address"></label>
                                                 </div>
                                             </div>
 
 
-                                            <button className="btn waves-effect waves-light light-blue darken-4" type="submit" name="action">Submit
+                                            <button className="btn waves-effect waves-light light-blue darken-4 modal-close" 
+                                            type="submit" 
+                                            name="action"
+                                            onClick={this.onClickPersonal}>Submit
                                                  <i className="material-icons right">send</i>
                                             </button>
                                         </form>
@@ -326,7 +420,7 @@ class Profile extends Component {
                                 <span className="black-text"><strong>Personal Information</strong></span>
                                 <div className="divider"></div>
                                 <p>Name: {this.state.first_name}{" "}{this.state.last_name}</p>
-                                <p>Age: {this.state.age}</p>
+                                <p>Date of birth: {this.state.age}</p>
                                 <p>Remote sessions: {this.state.remote}</p>
                                 <p>Presental sessions: {this.state.inperson}</p>
                                 <p>Address: {this.state.address}</p>
