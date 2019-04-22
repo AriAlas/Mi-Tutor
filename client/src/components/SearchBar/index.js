@@ -10,7 +10,7 @@ function SearchBar(props) {
               <input placeholder="Zip Code" id="zipCode" type="input" className="validate"
                name={props.name}
                value={props.value} 
-                onChange={e=> props._handleInput(e)}
+                onChange={e=> props.handleInput(e)}
                  ></input>
             </div>
           </div>
