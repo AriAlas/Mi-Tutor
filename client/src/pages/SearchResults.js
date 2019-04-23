@@ -15,7 +15,7 @@ class SearchResults extends Component {
       }
     }
 
-    _handleInput = (event) =>{
+    handleInput = (event) =>{
       const value = event.target.value;
       const name = event.target.name;
       this.setState({
@@ -23,7 +23,7 @@ class SearchResults extends Component {
       }) 
     }
 
-    _searchGeo = ()=>{
+    searchGeo = ()=>{
       API.getFromGeo(this.state.search).then((res)=>{
         console.log(res.data.results[0].geometry.location.lat)
         console.log(res.data.results[0].geometry.location.lng)
@@ -42,8 +42,8 @@ class SearchResults extends Component {
             <div>
                 <Nav></Nav>
                 <div>
-                  <SearchBar _handleInput={this._handleInput} value={this.state.search} name="search"/>
-                  <button onClick={this._searchGeo}>Click Me To Search</button>
+                  <SearchBar handleInput={this.handleInput} value={this.state.search} name="search"/>
+                  <button onClick={this.searchGeo}>Click Me To Search</button>
                 <Map
                 id="myMap"
                 options={{

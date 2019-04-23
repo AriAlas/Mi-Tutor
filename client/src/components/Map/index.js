@@ -7,7 +7,6 @@ class Map extends Component {
     this.onScriptLoad = this.onScriptLoad.bind(this)
   }
 
-  
 
   onScriptLoad() {
     const map = new window.google.maps.Map(
