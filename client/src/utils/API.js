@@ -9,7 +9,11 @@ export default {
     updateTutor: function(id, data){
         return axios.put("/api/tutor/"+id, data)
     },
+    getRemote: function(){
+        return axios.get("/api/remote/");
+    },
     getFromGeo: function(search){
         return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${search}&key=AIzaSyBBU1xVisZcgNbmIYreSZJEfrfGTFV18-k`)
     }
+
 }

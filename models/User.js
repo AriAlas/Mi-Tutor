@@ -30,7 +30,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         
         Date_of_birth: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.DATEONLY,
             allowNull: true
         },
         remote: {
