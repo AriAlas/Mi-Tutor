@@ -25,6 +25,7 @@ class Profile extends Component {
         }
     }
     componentDidMount() {
+        
         const token = localStorage.userToken;
         const decoded = jwt_decode(token)
         const email = decoded.email;
@@ -35,17 +36,28 @@ class Profile extends Component {
         })
 
         API.getOneTutor(email)
-            .then(tutor => this.setState({
+            .then(tutor => 
+                this.setState({
                 id: tutor.data.id,
                 bio: tutor.data.bio,
                 Date_of_birth: tutor.data.Date_of_birth,
-                remote: tutor.data.remote,
-                inperson: tutor.data.inperson,
+                remote: tutor.data.remote === true ? "Yes" : "No",
+               
+                inperson: tutor.data.inperson === true ? "Yes" : "No",
                 subjects: tutor.data.subjects ? tutor.data.subjects.split(",") : [],
                 profileImage: tutor.data.profileImage,
                 address: tutor.data.address
-            }))
+            }
+            )
+            )
             .catch(err => console.log(err));
+            
+
+    }
+    onChangeImage = e => {
+
+    }
+    onClickImage = e => {
 
     }
     onChangeBio = (e) => {
@@ -70,12 +82,12 @@ class Profile extends Component {
     onChangeSubjects = (e) => {
         var value = e.target.value;
         var subjects = this.state.subjects;
-        
+
         // console.log(subjects);
         var index = subjects.indexOf(value);
-        if (index === -1) {subjects.push(value)}
+        if (index === -1) { subjects.push(value) }
         console.log("index", index);
-        
+
         this.setState({ subjects: subjects, lastclickedoption: value })
 
     }
@@ -101,7 +113,7 @@ class Profile extends Component {
         var name = e.target.name;
         var value = e.target.value;
 
-        this.setState({[name]:value});
+        this.setState({ [name]: value });
     }
     onClickPersonal = e => {
         e.preventDefault();
@@ -125,7 +137,7 @@ class Profile extends Component {
     }
 
 
-    
+
 
 
 
@@ -160,8 +172,8 @@ class Profile extends Component {
                                         <span className="card-title black-text">{this.state.first_name}{" "}{this.state.last_name}</span>
                                         <form action="">
                                             <div className="file-field">
-
-                                                <a className="btn-floating halfway-fab waves-effect waves-light  light-blue darken-4" href=""><i className="material-icons">edit</i></a>
+                                                {/* Modal button */}
+                                                <a className="btn-floating halfway-fab waves-effect waves-light  light-blue darken-4 modal-trigger" href="#modal0"><i className="material-icons">edit</i></a>
 
 
                                             </div>
@@ -174,8 +186,43 @@ class Profile extends Component {
                     </div>
                 </section>
 
-                {/* This is the BIO Section */}
+                {/* This is the Image Section */}
                 <section className="section">
+
+
+                    {/* Modal Structure */}
+                    <div id="modal0" className="modal">
+                        <div className="modal-content">
+                            <h4>Profile Picture</h4>
+
+                            <form action="">
+                                <div className="row">
+                                    <div className="file-field input-field">
+                                        <div className="btn">
+                                            <span>File</span>
+                                            <input type="file"></input>
+                                        </div>
+                                        <div className="file-path-wrapper">
+                                            <input className="file-path validate" type="text"></input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            
+
+                        </div>
+                        <div className="modal-footer">
+                        <button className="btn waves-effect waves-light light-blue darken-4 modal-close"
+                                type="submit"
+                                name="action"
+                                value={this.state.id}
+                                onClick={this.onClickImage}>Submit
+                                                 <i className="material-icons right">send</i>
+                            </button>{" "}
+                            <button href="#!" className="modal-close btn waves-effect  light-blue darken-4">Close</button>
+                        </div>
+
+                    </div>
 
 
 
@@ -209,19 +256,20 @@ class Profile extends Component {
                                                     <label htmlFor="bio">Tell us a little about yourself!</label>
                                                 </div>
                                             </div>
-                                            <button className="btn waves-effect waves-light light-blue darken-4 modal-close"
-                                                type="submit"
-                                                name="action"
-                                                value={this.state.id}
-                                                onClick={this.onClickBio}>Submit
-                                                 <i className="material-icons right">send</i>
-                                            </button>
+                                            
 
 
                                         </form>
 
                                     </div>
                                     <div className="modal-footer">
+                                    <button className="btn waves-effect waves-light light-blue darken-4 modal-close"
+                                                type="submit"
+                                                name="action"
+                                                value={this.state.id}
+                                                onClick={this.onClickBio}>Submit
+                                                 <i className="material-icons right">send</i>
+                                            </button> {" "}
                                         <button href="#!" className="modal-close btn waves-effect  light-blue darken-4">Close</button>
                                     </div>
 
@@ -256,11 +304,11 @@ class Profile extends Component {
 
                                             <div className="row">
                                                 <div className="input-field col s12">
-                                                    <select multiple 
+                                                    <select multiple
                                                         id="subjects"
                                                         onChange={this.onChangeSubjects}
                                                         value={this.state.lastclickedoption}
-                                                        >
+                                                    >
                                                         <option disabled={true} value="">Choose an option</option>
                                                         <option value="Mathematics">Mathematics</option>
                                                         <option value="Science">Science</option>
@@ -275,20 +323,20 @@ class Profile extends Component {
                                                     <label>What subjects do you feel comfortable teaching?</label>
                                                 </div>
                                             </div>
-                                           
+
 
                                         </form>
 
                                     </div>
-                                    
+
                                     <div className="modal-footer">
-                                    <button className="btn waves-effect waves-light light-blue darken-4 modal-close"
-                                                type="submit"
-                                                name="action"
-                                                onClick={this.onClickSubjects}>Submit
+                                        <button className="btn waves-effect waves-light light-blue darken-4 modal-close"
+                                            type="submit"
+                                            name="action"
+                                            onClick={this.onClickSubjects}>Submit
                                                  <i className="material-icons right">send</i>
-                                            </button>
-                                            {" "}
+                                        </button>
+                                        {" "}
                                         <button href="#!" className="modal-close btn waves-effect  light-blue darken-4">Close</button>
                                     </div>
 
@@ -303,7 +351,7 @@ class Profile extends Component {
                                 <ul>
                                     {this.state.subjects.map(function (subject, i) {
                                         return (
-                                            <li key ={i} >{subject}</li>
+                                            <li key={i} >{subject}</li>
                                         )
                                     }
                                     )}
@@ -334,43 +382,41 @@ class Profile extends Component {
                                                     <label htmlFor="first_name">First Name</label>
                                                 </div>
                                                 <div className="input-field col s4">
-                                                    <input id="last_name" 
-                                                    type="text" 
-                                                    className="validate" 
-                                                    name="last_name"
-                                                    onChange={this.onChangePersonal}
-                                                    value={this.state.last_name}></input>
+                                                    <input id="last_name"
+                                                        type="text"
+                                                        className="validate"
+                                                        name="last_name"
+                                                        onChange={this.onChangePersonal}
+                                                        value={this.state.last_name}></input>
                                                     <label htmlFor="last_name">Last Name</label>
                                                 </div>
                                                 <div className="input-field col s4 browser-default">
-                                                    <input id="bday" 
-                                                    type="date" 
-                                                    name="bday"
-                                                    onChange={this.onChangePersonal}
-                                                    value={this.state.Date_of_birth}></input>
-                                                    <label htmlFor="age">Birthdate</label>
+                                                    <input id="Date_of_birth"
+                                                        type="date"
+                                                        name="Date_of_birth"
+                                                        onChange={this.onChangePersonal}
+                                                        value={this.state.Date_of_birth}></input>
+                                                    <label htmlFor="Date_of_birth">Birthdate</label>
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="input-field col s6">
-                                                    <select 
-                                                    name="remote" 
-                                                    defaultValue={"default"}
-                                                    onChange={this.onChangePersonal}
-                                                    value={this.state.remote}>
-                                                        <option disabled={true} value="default">Choose an option</option>
+                                                    <select
+                                                        name="remote"
+                                                        onChange={this.onChangePersonal}
+                                                        value={this.state.remote}>
+                                                        <option value="">Choose an option</option>
                                                         <option value="1">Yes</option>
                                                         <option value="0">No</option>
                                                     </select>
                                                     <label>Are you available to tutor remotely (online)?</label>
                                                 </div>
                                                 <div className="input-field col s6">
-                                                    <select 
-                                                    name="inperson" 
-                                                    defaultValue={"default"}
-                                                    onChange={this.onChangePersonal}
-                                                    value={this.state.inperson}>
-                                                        <option disabled={true} value="" value="default">Choose an option</option>
+                                                    <select
+                                                        name="inperson"
+                                                        onChange={this.onChangePersonal}
+                                                        value={this.state.inperson}>
+                                                        <option value="">Choose an option</option>
                                                         <option value="1">Yes</option>
                                                         <option value="0">No</option>
                                                     </select>
@@ -379,12 +425,11 @@ class Profile extends Component {
                                             </div>
                                             <div className="row">
                                                 <div className="input-field col s12">
-                                                <GooglePlacesAutocomplete
-                                                     onSelect={console.log}
-                                                     onSelect={({ description }) => (
-                                                    this.setState({ address: description })
-                                                    )}
-                                                     />
+                                                    <GooglePlacesAutocomplete
+                                                        onSelect={({ description }) => (
+                                                            this.setState({ address: description })
+                                                        )}
+                                                    />
                                                     {/* <input id="address" 
                                                     type="text" 
                                                     className="validate" 
@@ -395,16 +440,18 @@ class Profile extends Component {
                                             </div>
 
 
-                                            <button className="btn waves-effect waves-light light-blue darken-4 modal-close" 
-                                            type="submit" 
-                                            name="action"
-                                            onClick={this.onClickPersonal}>Submit
-                                                 <i className="material-icons right">send</i>
-                                            </button>
+                                           
                                         </form>
 
                                     </div>
+                                    
                                     <div className="modal-footer">
+                                    <button className="btn waves-effect waves-light light-blue darken-4 modal-close"
+                                                type="submit"
+                                                name="action"
+                                                onClick={this.onClickPersonal}>Submit
+                                                 <i className="material-icons right">send</i>
+                                            </button>{" "}
                                         <button href="#!" className="modal-close btn waves-effect  light-blue darken-4">Close</button>
                                     </div>
 
@@ -419,9 +466,9 @@ class Profile extends Component {
                                 <span className="black-text"><strong>Personal Information</strong></span>
                                 <div className="divider"></div>
                                 <p>Name: {this.state.first_name}{" "}{this.state.last_name}</p>
-                                <p>Date of birth: {this.state.age}</p>
-                                <p>Remote sessions: {this.state.remote}</p>
-                                <p>Presental sessions: {this.state.inperson}</p>
+                                <p>Date of birth: {this.state.Date_of_birth }</p>
+                                <p>Remote sessions: {this.state.remote === "1" ? "Yes" : "No"}</p>
+                                <p>Presental sessions: {this.state.inperson === "1" ? "Yes" : "No"}</p>
                                 <p>Address: {this.state.address}</p>
                             </div>
                         </div>

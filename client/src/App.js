@@ -7,6 +7,7 @@ import Tutors from "./components/Tutors";
 import Profile from "./components/Profile";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import Remote from "./components/Remote";
 import SearchResults from './pages/SearchResults';
 
 
@@ -22,6 +23,8 @@ function App() {
             <Route exact path="/profile" component={Profile} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
+            <Route exact path="/remote" component={Remote} />
+
           </Switch>
         </div>
       </Router>

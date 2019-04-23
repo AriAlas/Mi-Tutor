@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
 import Map from "../components/Map";
 import SearchBar from "../components/SearchBar";
@@ -59,6 +60,7 @@ class SearchResults extends Component {
                 }}
                 ></Map>
                 </div>
+                <Link to="/remote" className="waves-effect waves-light btn">Remote Tutors</Link>
             </div>
         )
     };
