@@ -32,7 +32,6 @@ class Profile extends Component {
             first_name: decoded.first_name,
             last_name: decoded.last_name,
             email: decoded.email
-
         })
 
         API.getOneTutor(email)
