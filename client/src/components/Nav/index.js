@@ -1,7 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { M, options } from "react-materialize";
 
 class Nav extends React.Component {
+  componentDidMount() {
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.sidenav');
+      var instances = M.Sidenav.init(elems, options);
+    });
+  }
   logOut(e){
     e.preventDefault();
     localStorage.removeItem("userToken");
