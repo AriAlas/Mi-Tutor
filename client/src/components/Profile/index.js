@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import API from "../../utils/API"
 import LargeForm from "../EditProfile"
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import M from "materialize-css";
 
 class Profile extends Component {
     constructor() {
@@ -25,7 +26,6 @@ class Profile extends Component {
         }
     }
     componentDidMount() {
-        
         const token = localStorage.userToken;
         const decoded = jwt_decode(token)
         const email = decoded.email;
@@ -34,7 +34,15 @@ class Profile extends Component {
             last_name: decoded.last_name,
             email: decoded.email
         })
-
+        var elems = document.querySelectorAll('.modal');
+        M.Modal.init(elems, M.options);
+        var elems = document.querySelectorAll('.dropdown-trigger');
+        M.Dropdown.init(elems, M.options);
+        var elems = document.querySelectorAll('select');
+        M.FormSelect.init(elems, M.options);
+        var elems = document.querySelectorAll('.sidenav');
+        M.Sidenav.init(elems, M.options);  
+        
         API.getOneTutor(email)
             .then(tutor => 
                 this.setState({
@@ -152,6 +160,7 @@ class Profile extends Component {
             <div>
                 <nav>
                     <div className="nav-wrapper">
+                        <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                         <Link to="/" className="brand-logo">MiTutor</Link>
                         <ul className="right hide-on-med-and-down">
                             <li><Link to="/about">About</Link></li>
@@ -161,6 +170,12 @@ class Profile extends Component {
                         </ul>
                     </div>
                 </nav>
+                <ul className="sidenav" id="mobile-demo">
+                    <li><Link to="/about">About</Link></li>
+                    {/* If Authenticated This <a> tag is Profile */}
+                    {/* If NOT authenticated this tag is  LOGIN*/}
+                    <li><Link to="/tutors">LogOut</Link></li>
+                </ul>
 
                 {/* This is the profile picture */}
                 <section className="section">

@@ -1,13 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import M from "materialize-css";
 
 class Nav extends React.Component {
+  componentDidMount() {
+      var elems = document.querySelectorAll('.sidenav');
+      M.Sidenav.init(elems, M.options);
+   }
+
   logOut(e){
     e.preventDefault();
     localStorage.removeItem("userToken");
     this.props.history.push("/");
   }
  
+
   render () {
   // this is the navbar when the user is not logged in
     const loginLink = (
