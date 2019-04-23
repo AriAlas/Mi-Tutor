@@ -41,14 +41,15 @@ class Profile extends Component {
                 id: tutor.data.id,
                 bio: tutor.data.bio,
                 Date_of_birth: tutor.data.Date_of_birth,
-                remote: tutor.data.remote === true ? "Yes" : "No",
+                remote: tutor.data.remote,
                
-                inperson: tutor.data.inperson === true ? "Yes" : "No",
+                inperson: tutor.data.inperson,
                 subjects: tutor.data.subjects ? tutor.data.subjects.split(",") : [],
                 profileImage: tutor.data.profileImage,
                 address: tutor.data.address
-            }
-            )
+            }, function(){
+                console.log("updated state",this.state)
+            })
             )
             .catch(err => console.log(err));
             
@@ -86,6 +87,8 @@ class Profile extends Component {
         // console.log(subjects);
         var index = subjects.indexOf(value);
         if (index === -1) { subjects.push(value) }
+        else{subjects.pop(value)}
+       
         console.log("index", index);
 
         this.setState({ subjects: subjects, lastclickedoption: value })
@@ -113,7 +116,9 @@ class Profile extends Component {
         var name = e.target.name;
         var value = e.target.value;
 
-        this.setState({ [name]: value });
+        this.setState({ [name]: value }, function(){
+            console.log("onchangepersonal",this.state)
+        });
     }
     onClickPersonal = e => {
         e.preventDefault();
@@ -307,11 +312,12 @@ class Profile extends Component {
                                                     <select multiple
                                                         id="subjects"
                                                         onChange={this.onChangeSubjects}
-                                                        value={this.state.lastclickedoption}
+                                                    
+                                                        value={this.state.subjects}
                                                     >
                                                         <option disabled={true} value="">Choose an option</option>
                                                         <option value="Mathematics">Mathematics</option>
-                                                        <option value="Science">Science</option>
+                                                        <option value="Science" >Science</option>
                                                         <option value="Music">Music</option>
                                                         <option value="Art">Art</option>
                                                         <option value="English">English</option>
@@ -406,8 +412,8 @@ class Profile extends Component {
                                                         onChange={this.onChangePersonal}
                                                         value={this.state.remote}>
                                                         <option value="">Choose an option</option>
-                                                        <option value="1">Yes</option>
-                                                        <option value="0">No</option>
+                                                        <option value={true}>Yes</option>
+                                                        <option value={false}>No</option>
                                                     </select>
                                                     <label>Are you available to tutor remotely (online)?</label>
                                                 </div>
@@ -417,8 +423,8 @@ class Profile extends Component {
                                                         onChange={this.onChangePersonal}
                                                         value={this.state.inperson}>
                                                         <option value="">Choose an option</option>
-                                                        <option value="1">Yes</option>
-                                                        <option value="0">No</option>
+                                                        <option value={true}>Yes</option>
+                                                        <option value={false}>No</option>
                                                     </select>
                                                     <label>Are you available to tutor in person?</label>
                                                 </div>
@@ -467,8 +473,8 @@ class Profile extends Component {
                                 <div className="divider"></div>
                                 <p>Name: {this.state.first_name}{" "}{this.state.last_name}</p>
                                 <p>Date of birth: {this.state.Date_of_birth }</p>
-                                <p>Remote sessions: {this.state.remote === "1" ? "Yes" : "No"}</p>
-                                <p>Presental sessions: {this.state.inperson === "1" ? "Yes" : "No"}</p>
+                                <p>Remote sessions: {this.state.remote ? "Yes" : "No"}</p>
+                                <p>Presental sessions: {this.state.inperson ? "Yes" : "No"}</p>
                                 <p>Address: {this.state.address}</p>
                             </div>
                         </div>
