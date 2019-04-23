@@ -50,12 +50,12 @@ class Remote extends React.Component {
                                                     </ul>
                                                 </span>
                                                 {/* Modal button */}
-                                                <a class="waves-effect waves-light btn modal-trigger" href="#modal1"><i class="material-icons left">email</i>Contact</a>
+                                                <a class="waves-effect waves-light btn modal-trigger" href="#modal4"><i class="material-icons left">email</i>Contact</a>
 
 
                                                   {/* Modal Structure */}
 
-                                                  <div id="modal1" className="modal">
+                                                  <div id="modal4" className="modal">
                                     <div className="modal-content">
                                         <h4>Contact me</h4>
 
