@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { register } from "../UserFuntions";
 import Nav from "../Nav";
+import M from "materialize-css";
 
 class Register extends Component {
     constructor() {
@@ -13,6 +14,9 @@ class Register extends Component {
         }
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
+    }
+    componentDidMount() {
+        M.AutoInit();
     }
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
