@@ -7,15 +7,16 @@ class Remote extends React.Component {
     state = {
         tutors: []
     }
+    
     loadTutors = () => {
         API.getRemote().then(res => this.setState({ tutors: res.data }))
             .catch(err => console.log(err))
     }
     componentDidMount = () => {
         M.AutoInit();
+        var elems = document.querySelectorAll('.modal');
+        M.Modal.init(elems, M.options);
         this.loadTutors();
-
-
     }
 
     // onClickForm = e => {

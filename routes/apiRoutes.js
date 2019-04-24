@@ -57,6 +57,14 @@ users.put("/tutor/:id", (req, res)=>{
     db.User.update(req.body,{where:{id:req.params.id}})
     .then(tutor => res.json(tutor)).catch(err => console.log(err))
 })
+// get all tutors that work in person
+users.get("/inperson", (req, res)=> {
+    db.User.findAll({
+        where: {
+            inperson: true
+        }
+    }).then(tutors => res.json(tutors)).catch(err => console.log(err));
+})
 
 users.post("/imageupload/", (req, res)=>{
     

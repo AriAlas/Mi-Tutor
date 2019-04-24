@@ -12,6 +12,9 @@ export default {
     getRemote: function(){
         return axios.get("/api/remote/");
     },
+    getInperson: function(){
+        return axios.get("/api/inperson/");
+    },
     getFromGeo: function(search){
         return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${search}&key=AIzaSyBBU1xVisZcgNbmIYreSZJEfrfGTFV18-k`)
     },

@@ -4,6 +4,8 @@ import Nav from "../components/Nav";
 import Map from "../components/Map";
 import SearchBar from "../components/SearchBar";
 import SearchButton from "../components/SearchButton";
+import Inperson from "../components/Inperson";
+import M from "materialize-css";
 
 class SearchResults extends Component {
   constructor(props){
@@ -44,34 +46,38 @@ class SearchResults extends Component {
     //     return err
     //   })
     // }
+    componentDidMount() {
+      M.AutoInit()
+    }
     render() {
         return (
             <div>
                 <Nav></Nav>
                 <div className="container">
-                <div>
-                  {/* <SearchBar handleInput={this.handleInput} value={this.state.search} name="search"/> */}
-                  {/* <button onClick={this.searchGeo}>Click Me To Search</button> */}
-                <Map
-                id="myMap"
-                options={{
-                  center: { lat: this.state.lat.length ? this.state.lat : 41.0082, lng: this.state.lng.length ? this.state.lng : 28.9784 },
-                  zoom: 8
-                }}
-                onMapLoad={map => {
-                  var marker = new window.google.maps.Marker({
-                    position:  { lat: this.state.lat.length ? this.state.lat : 41.0082, lng: this.state.lng.length ? this.state.lng : 28.9784 },
-                    map: map,
-                    title: 'Hello Istanbul!'
-                  });
-                }}
-                ></Map>
-                </div>
-                {/* add cards for inperson tutors, possibly collections will look better */}
-                <Link to="/remote" className="waves-effect waves-light btn">Remote Tutors</Link>
+                  <div className="col s6 pull-s6">
+                    {/* <SearchBar handleInput={this.handleInput} value={this.state.search} name="search"/> */}
+                    {/* <button onClick={this.searchGeo}>Click Me To Search</button> */}
+                  <Map
+                  id="myMap"
+                  options={{
+                    center: { lat: this.state.lat.length ? this.state.lat : 41.0082, lng: this.state.lng.length ? this.state.lng : 28.9784 },
+                    zoom: 8
+                  }}
+                  onMapLoad={map => {
+                    var marker = new window.google.maps.Marker({
+                      position:  { lat: this.state.lat.length ? this.state.lat : 41.0082, lng: this.state.lng.length ? this.state.lng : 28.9784 },
+                      map: map,
+                      title: 'Hello Istanbul!'
+                    });
+                  }}
+                  ></Map>
+                  </div>
+                  <div>
+                    <Inperson></Inperson>
+                  </div>
+                  <Link to="/remote" className="waves-effect waves-light btn">Remote Tutors</Link>
                 </div>
             </div>
-
         )
     };
 }
