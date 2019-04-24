@@ -67,7 +67,7 @@ class SearchResults extends Component {
                 }}
                 ></Map>
                 </div>
-                {/* <div className */}
+                {/* add cards for inperson tutors, possibly collections will look better */}
                 <Link to="/remote" className="waves-effect waves-light btn">Remote Tutors</Link>
                 </div>
             </div>
