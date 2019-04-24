@@ -7,6 +7,24 @@ const fs = require('fs');
 const fileType = require('file-type');
 const bluebird = require('bluebird');
 const multiparty = require('multiparty');
+// email feature dependencies
+const sgMail = require("@sendgrid/mail");
+//configure API key for Sendgrid
+sgMail.setApiKey(process.env.SGMAIL_KEY);
+
+users.get("/send=email", (req, res)=>{
+    const {recipient, name, sender, text} = req.query;
+// sendgrid requirements
+    const msg = {
+        to: recipient,
+        from: sender,
+        subject: name,
+        text: text
+    }
+      sgMail.send(msg).then(msg => console.log(msg));
+})
+
+
 
 // configure the keys for accessing AWS
 AWS.config.update({
@@ -44,6 +62,14 @@ users.get("/tutor/:email", (req, res)=>{
         }
     }).then(tutor => res.json(tutor));
 })
+//get me a tutor by id
+users.get("/tutor/:id", (req, res)=>{
+    db.User.findOne({
+        where: {
+            id: req.params.email
+        }
+    }).then(tutor => res.json(tutor));
+})
 // get all tutors that can work remotely
 users.get("/remote", (req, res)=> {
     db.User.findAll({
@@ -57,6 +83,8 @@ users.put("/tutor/:id", (req, res)=>{
     db.User.update(req.body,{where:{id:req.params.id}})
     .then(tutor => res.json(tutor)).catch(err => console.log(err))
 })
+
+
 
 users.post("/imageupload/", (req, res)=>{
     

@@ -6,6 +6,9 @@ export default {
     getOneTutor: function(email){
         return axios.get("/api/tutor/" + email);
     },
+    getOneTutorid: function(id){
+        return axios.get("/api/tutor/" + id);
+    },
     updateTutor: function(id, data){
         return axios.put("/api/tutor/"+id, data)
     },
@@ -20,6 +23,9 @@ export default {
             headers: {
                 'Content-Type': 'multipart/form-data'}
         })
+    },
+    sendgrid: function(data){
+        return axios.get("/api//send=email/" + data)
     }
 
 }
