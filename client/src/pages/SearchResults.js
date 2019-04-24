@@ -3,48 +3,55 @@ import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
 import Map from "../components/Map";
 import SearchBar from "../components/SearchBar";
-import API from "../utils/API"
 import SearchButton from "../components/SearchButton";
 
 class SearchResults extends Component {
-    constructor(){
-      super()
-      this.state = {
-        search: "",
-        lat:"",
-        lng:""
-      }
+  constructor(props){
+    super(props)
+    this.state = {
+      search: "",
+      lat:"",
+      lng:""
     }
+  }
+    // constructor(){
+    //   super()
+    //   this.state = {
+    //     search: "",
+    //     lat:"",
+    //     lng:""
+    //   }
+    // }
 
-    handleInput = (event) =>{
-      const value = event.target.value;
-      const name = event.target.name;
-      this.setState({
-        [name]:value
-      }) 
-    }
+    // handleInput = (event) =>{
+    //   const value = event.target.value;
+    //   const name = event.target.name;
+    //   this.setState({
+    //     [name]:value
+    //   }) 
+    // }
 
-    searchGeo = ()=>{
-      API.getFromGeo(this.state.search).then((res)=>{
-        console.log(res.data.results[0].geometry.location.lat)
-        console.log(res.data.results[0].geometry.location.lng)
-        this.setState({
-          search:"",
-          lat: res.data.results[0].geometry.location.lat,
-          lng: res.data.results[0].geometry.location.lng
-        })
-      }).catch(err =>{
-        return err
-      })
-
-    }
+    // searchGeo = ()=>{
+    //   API.getFromGeo(this.state.search).then((res)=>{
+    //     console.log(res.data.results[0].geometry.location.lat)
+    //     console.log(res.data.results[0].geometry.location.lng)
+    //     this.setState({
+    //       search:"",
+    //       lat: res.data.results[0].geometry.location.lat,
+    //       lng: res.data.results[0].geometry.location.lng
+    //     })
+    //   }).catch(err =>{
+    //     return err
+    //   })
+    // }
     render() {
         return (
             <div>
                 <Nav></Nav>
+                <div className="container">
                 <div>
-                  <SearchBar handleInput={this.handleInput} value={this.state.search} name="search"/>
-                  <button onClick={this.searchGeo}>Click Me To Search</button>
+                  {/* <SearchBar handleInput={this.handleInput} value={this.state.search} name="search"/> */}
+                  {/* <button onClick={this.searchGeo}>Click Me To Search</button> */}
                 <Map
                 id="myMap"
                 options={{
@@ -60,8 +67,11 @@ class SearchResults extends Component {
                 }}
                 ></Map>
                 </div>
+                {/* add cards for inperson tutors, possibly collections will look better */}
                 <Link to="/remote" className="waves-effect waves-light btn">Remote Tutors</Link>
+                </div>
             </div>
+
         )
     };
 }

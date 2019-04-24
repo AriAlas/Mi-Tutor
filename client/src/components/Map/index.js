@@ -34,7 +34,13 @@ class Map extends Component {
 
   render() {
     return (
-      <div style={{ width: 500, height: 500 }} id={this.props.id} />
+      <div className="row">
+        <div className="col s6 m6">
+        <div className="card">
+          <div style={{ width: 500, height: 500 }} id={this.props.id} />
+        </div>
+        </div>
+      </div>
     );
   }
 }
