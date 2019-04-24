@@ -20,6 +20,7 @@ class Profile extends Component {
             inperson: "",
             subjects: [],
             profileImage: "",
+            file: "",
             address: "",
             lastclickedoption: []
 
@@ -62,9 +63,25 @@ class Profile extends Component {
             .catch(err => console.log(err));
     }
     onChangeImage = e => {
-
+        this.setState({file: e.target.files}, function(){
+            console.log(this.state.file[0])
+        })
     }
     onClickImage = e => {
+        e.preventDefault();
+      var id = this.state.id;
+        const formData = new FormData();
+        formData.append('file', this.state.file[0]);
+        
+
+       API.postImage(formData).then(response => {
+           API.updateTutor(id, {profileImage: response.data.Location}).then(res=>console.log(res))
+        this.setState({profileImage:response.data.Location})
+        }).catch(error => {
+            console.log(error)
+          // handle your error
+        });
+
 
     }
     onChangeBio = (e) => {
@@ -179,8 +196,11 @@ class Profile extends Component {
                             <div className="col s4 ">
                                 <div className="card hoverable">
                                     <div className="card-image">
-                                        <img src="https://via.placeholder.com/150" />
+                                        <img src={this.state.profileImage ? this.state.profileImage : "https://via.placeholder.com/150"} />
                                         <span className="card-title black-text">{this.state.first_name}{" "}{this.state.last_name}</span>
+
+
+
                                         <form action="">
                                             <div className="file-field">
                                                 {/* Modal button */}
@@ -188,6 +208,8 @@ class Profile extends Component {
 
                                             </div>
                                         </form>
+
+
                                     </div>
                                 </div>
                             </div>
@@ -205,12 +227,21 @@ class Profile extends Component {
                         <div className="modal-content">
                             <h4>Profile Picture</h4>
 
-                            <form action="">
+                            <form >
                                 <div className="row">
                                     <div className="file-field input-field">
                                         <div className="btn">
                                             <span>File</span>
-                                            <input type="file"></input>
+
+
+                                            
+                                        <input label='upload file' 
+                                        type='file' 
+                                        name="profileImage" 
+                                        onChange={this.onChangeImage} />
+                                          <button type='submit'>Send</button>
+
+
                                         </div>
                                         <div className="file-path-wrapper">
                                             <input className="file-path validate" type="text"></input>
@@ -219,6 +250,7 @@ class Profile extends Component {
                                 </div>
                             </form>
                             
+
 
                         </div>
                         <div className="modal-footer">

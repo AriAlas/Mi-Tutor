@@ -14,6 +14,12 @@ export default {
     },
     getFromGeo: function(search){
         return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${search}&key=AIzaSyBBU1xVisZcgNbmIYreSZJEfrfGTFV18-k`)
+    },
+    postImage: function (formData){
+        return axios.post("/api/imageupload/", formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'}
+        })
     }
 
 }

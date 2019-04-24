@@ -1,6 +1,7 @@
 import React from "react"
 import Nav from "../Nav";
 import API from "../../utils/API";
+import M from "materialize-css";
 
 class Remote extends React.Component {
     state = {
@@ -12,6 +13,8 @@ class Remote extends React.Component {
     }
     componentDidMount = () => {
         this.loadTutors();
+        M.AutoInit();
+
     }
     render() {
         return (
@@ -43,9 +46,15 @@ class Remote extends React.Component {
                                                     </ul>
                                                 </span>
                                                 {/* Modal button */}
+
                                                 <a className="waves-light btn modal-trigger" href="#modal4"><i className="material-icons left">email</i>Contact</a>
+                                           
+                                           
+
                                                   {/* Modal Structure */}
-                                                  <div id="modal4" className="modal">
+
+                                                  <div id={tutor.id} className="modal">
+
                                     <div className="modal-content">
                                         <h4>Contact me</h4>
                                         <form action="">
