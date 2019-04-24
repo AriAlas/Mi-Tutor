@@ -5,7 +5,13 @@ import M from "materialize-css";
 
 class Remote extends React.Component {
     state = {
-        tutors: []
+        tutors: [],
+        email: {
+            recipient : "",
+            name: "",
+            sender: "",
+            text: ""
+        }
     }
     loadTutors = () => {
         API.getRemote().then(res => this.setState({ tutors: res.data }))
@@ -18,15 +24,19 @@ class Remote extends React.Component {
 
     }
 
-    // onClickForm = e => {
-
-    // } 
-    // onChangeForm = e ={
-
-    // }
+    onClickForm = e => {
+        // const {email} = this.state.email;
+        // fetch(`http://localhost:3000/send=email?recipient=${email.recipient}&name=${email.name}&sender=${email.sender}&text=${email.text}`)
+        // .catch(err => console.log(err))
+        e.preventDefault();
+        const id = e.target.value;
+        API.getOneTutorid(id).then(res=>console.log("the ID of the tutor I need",res.data.id))
+        
+    } 
 
 
     render() {
+        const { email } = this.state;
         return (
             <div>
                 <Nav />
@@ -67,27 +77,24 @@ class Remote extends React.Component {
                                                         <div className="row">
                                                             <div className="col s12">
                                                                 <div className="row">
-                                                                    <div className="input-field col s6">
+                                                                    <div className="input-field col s12">
                                                                         <input type="text"
-                                                                            id="first-name"
+                                                                            id="name"
                                                                             className="validate"
-                                                                            onChange={this.onChangeForm} />
-                                                                        <label htmlFor="first-name">First Name</label>
-                                                                    </div>
-                                                                    <div className="input-field col s6">
-                                                                        <input type="text"
-                                                                            id="last-name"
-                                                                            className="validate"
-                                                                            onChange={this.onChangeForm} />
-                                                                        <label htmlFor="last-name">First Name</label>
+                                                                            name="name"
+                                                                            value={email.name} 
+                                                                            onChange={e=>this.setState({ email: { ...email, name: e.target.value}})}/>
+                                                                        <label htmlFor="name">Name</label>
                                                                     </div>
                                                                 </div>
                                                                 <div className="row">
                                                                     <div className="input-field col s12">
                                                                         <input type="email"
-                                                                            id="email"
+                                                                            id="sender"
                                                                             className="validate"
-                                                                            onChange={this.onChangeForm} />
+                                                                            name="sender"
+                                                                            value={email.sender}
+                                                                            onChange={e=>this.setState({email: {...email, sender: e.target.value}})} />
                                                                         <label htmlFor="email">Email</label>
                                                                     </div>
                                                                 </div>
@@ -95,7 +102,11 @@ class Remote extends React.Component {
                                                                    
                                                                         
                                                                             <div className="input-field col s12">
-                                                                                <textarea id="textarea1" className="materialize-textarea"></textarea>
+                                                                                <textarea id="textarea1" 
+                                                                                className="materialize-textarea"
+                                                                                name = "text"
+                                                                                value={email.text}
+                                                                                onChange={e=>this.setState({email: {...email, text: e.target.value}})}></textarea>
                                                                                 <label htmlFor="textarea1">Message</label>
                                                                             </div>
                                                                        
@@ -108,7 +119,9 @@ class Remote extends React.Component {
 
                                                     </div>
                                                     <div className="modal-footer">
-                                                        <button  className="modal-close waves-effect waves-light btn"
+                                                    <button  className="modal-close waves-light btn"
+                                                       >Close <i className="material-icons right">close</i></button>{" "}
+                                                        <button  className="modal-close waves-light btn"
                                                         onClick={this.onClickForm}>Send <i className="material-icons right">send</i></button>
                                                     </div>
                                                 </div>
