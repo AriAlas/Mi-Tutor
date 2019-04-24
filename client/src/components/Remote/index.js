@@ -7,12 +7,9 @@ class Remote extends React.Component {
     state = {
         tutors: []
     }
-
-
     loadTutors = () => {
         API.getRemote().then(res => this.setState({ tutors: res.data }))
             .catch(err => console.log(err))
-
     }
     componentDidMount = () => {
         M.AutoInit();
@@ -20,12 +17,14 @@ class Remote extends React.Component {
 
 
     }
+
     // onClickForm = e => {
 
     // } 
     // onChangeForm = e ={
 
     // }
+
 
     render() {
         return (
@@ -45,7 +44,6 @@ class Remote extends React.Component {
                                                 <span className="black-text">
                                                     <h4>{tutor.first_name}{" "}{tutor.last_name}</h4>
                                                     <p>{tutor.bio}</p>
-
                                                 </span>
                                             </div>
                                             <div className="col s2">
@@ -57,8 +55,9 @@ class Remote extends React.Component {
                                                         ))}
                                                     </ul>
                                                 </span>
+
                                                 {/* <!-- Modal Trigger --> */}
-                                                <a className="waves-effect waves-light btn modal-trigger" href={"#" + tutor.id}>Modal</a>
+                                                <a className="waves-light btn modal-trigger" href={"#" + tutor.id}>Modal</a>
 
                                                 {/* <!-- Modal Structure --> */}
                                                 <div id={tutor.id} className="modal">
@@ -117,16 +116,13 @@ class Remote extends React.Component {
 
 
 
+
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>
-
                         ))}
-
-
                     </div>
                 </section>
             </div>
