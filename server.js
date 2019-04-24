@@ -7,6 +7,7 @@ var db = require("./models");
 var path = require("path");
 
 
+
 // body parser
 app.use(express.urlencoded({extended:true}));
 app.use(cors());
