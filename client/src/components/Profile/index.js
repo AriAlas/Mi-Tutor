@@ -34,14 +34,15 @@ class Profile extends Component {
             last_name: decoded.last_name,
             email: decoded.email
         })
-        var elems = document.querySelectorAll('.modal');
-        M.Modal.init(elems, M.options);
-        var elems = document.querySelectorAll('.dropdown-trigger');
-        M.Dropdown.init(elems, M.options);
-        var elems = document.querySelectorAll('select');
-        M.FormSelect.init(elems, M.options);
-        var elems = document.querySelectorAll('.sidenav');
-        M.Sidenav.init(elems, M.options);  
+        // var elems = document.querySelectorAll('.modal');
+        // M.Modal.init(elems, M.options);
+        // var elems = document.querySelectorAll('.dropdown-trigger');
+        // M.Dropdown.init(elems, M.options);
+        // var elems = document.querySelectorAll('select');
+        // M.FormSelect.init(elems, M.options);
+        // var elems = document.querySelectorAll('.sidenav');
+        // M.Sidenav.init(elems, M.options);  
+        M.AutoInit();
         
         API.getOneTutor(email)
             .then(tutor => 
@@ -50,7 +51,6 @@ class Profile extends Component {
                 bio: tutor.data.bio,
                 Date_of_birth: tutor.data.Date_of_birth,
                 remote: tutor.data.remote,
-               
                 inperson: tutor.data.inperson,
                 subjects: tutor.data.subjects ? tutor.data.subjects.split(",") : [],
                 profileImage: tutor.data.profileImage,
@@ -60,8 +60,6 @@ class Profile extends Component {
             })
             )
             .catch(err => console.log(err));
-            
-
     }
     onChangeImage = e => {
 
@@ -149,11 +147,6 @@ class Profile extends Component {
             .catch(err => console.log(err));
     }
 
-
-
-
-
-
     render() {
         return (
 
@@ -183,8 +176,6 @@ class Profile extends Component {
                         <div className="row">
                             <div className="col s4"></div>
 
-
-
                             <div className="col s4 ">
                                 <div className="card hoverable">
                                     <div className="card-image">
@@ -193,8 +184,7 @@ class Profile extends Component {
                                         <form action="">
                                             <div className="file-field">
                                                 {/* Modal button */}
-                                                <a className="btn-floating halfway-fab waves-effect waves-light  light-blue darken-4 modal-trigger" href="#modal0"><i className="material-icons">edit</i></a>
-
+                                                <a className="btn-floating halfway-fab waves-light light-blue darken-4 modal-trigger" href="#modal0"><i className="material-icons">edit</i></a>
 
                                             </div>
                                         </form>
@@ -237,25 +227,19 @@ class Profile extends Component {
                                 name="action"
                                 value={this.state.id}
                                 onClick={this.onClickImage}>Submit
-                                                 <i className="material-icons right">send</i>
+                                        <i className="material-icons right">send</i>
                             </button>{" "}
                             <button href="#!" className="modal-close btn waves-effect  light-blue darken-4">Close</button>
                         </div>
 
                     </div>
 
-
-
-
-
-
                     <div className="row">
                         <div className="col s1"></div>
                         <div className="col s10">
                             <div className="card-panel white hoverable">
                                 {/* Modal button */}
-                                <div className="right-align "><a className="btn-floating waves-effect waves-light light-blue darken-4 modal-trigger" href="#modal1"><i className="material-icons">edit</i></a></div>
-
+                                <div className="right-align "><a className="btn-floating waves-light light-blue darken-4 modal-trigger" href="#modal1"><i className="material-icons">edit</i></a></div>
 
                                 {/* Modal Structure */}
                                 <div id="modal1" className="modal">
@@ -277,8 +261,6 @@ class Profile extends Component {
                                                 </div>
                                             </div>
                                             
-
-
                                         </form>
 
                                     </div>
@@ -305,15 +287,12 @@ class Profile extends Component {
                         <div className="col s1"></div>
                     </div>
 
-
-
-
                     <div className="row">
                         <div className="col s2"></div>
                         <div className="col s4">
                             <div className="card-panel white hoverable">
                                 {/* Modal button */}
-                                <div className="right-align"><a className="btn-floating waves-effect waves-light light-blue darken-4 modal-trigger" href="#modal2"><i className="material-icons">edit</i></a></div>
+                                <div className="right-align"><a className="btn-floating waves-light light-blue darken-4 modal-trigger" href="#modal2"><i className="material-icons">edit</i></a></div>
 
                                 {/* Modal Structure */}
                                 <div id="modal2" className="modal modal-fixed-footer">
@@ -345,7 +324,6 @@ class Profile extends Component {
                                                 </div>
                                             </div>
 
-
                                         </form>
 
                                     </div>
@@ -362,8 +340,6 @@ class Profile extends Component {
                                     </div>
 
                                 </div>
-
-
 
                                 <span className="black-text"><strong>Area of knowledge</strong>
 
@@ -382,7 +358,7 @@ class Profile extends Component {
                         <div className="col s4">
                             <div className="card-panel white hoverable">
                                 {/* Modal button */}
-                                <div className="right-align"><a className="btn-floating waves-effect waves-light light-blue darken-4 modal-trigger" href="#modal3"><i className="material-icons">edit</i></a></div>
+                                <div className="right-align"><a className="btn-floating waves-light light-blue darken-4 modal-trigger" href="#modal3"><i className="material-icons">edit</i></a></div>
 
                                 {/* Modal Structure */}
                                 <div id="modal3" className="modal modal-fixed-footer">
