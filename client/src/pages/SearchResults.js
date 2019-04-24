@@ -6,6 +6,14 @@ import SearchBar from "../components/SearchBar";
 import SearchButton from "../components/SearchButton";
 
 class SearchResults extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      search: "",
+      lat:"",
+      lng:""
+    }
+  }
     // constructor(){
     //   super()
     //   this.state = {
@@ -40,6 +48,7 @@ class SearchResults extends Component {
         return (
             <div>
                 <Nav></Nav>
+                <div className="container">
                 <div>
                   {/* <SearchBar handleInput={this.handleInput} value={this.state.search} name="search"/> */}
                   {/* <button onClick={this.searchGeo}>Click Me To Search</button> */}
@@ -58,8 +67,11 @@ class SearchResults extends Component {
                 }}
                 ></Map>
                 </div>
+                {/* <div className */}
                 <Link to="/remote" className="waves-effect waves-light btn">Remote Tutors</Link>
+                </div>
             </div>
+
         )
     };
 }
