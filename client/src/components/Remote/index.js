@@ -46,7 +46,7 @@ class Remote extends React.Component {
                         {this.state.tutors.map(tutor => (
                             <div className="row" key={tutor.id}>
                                 <div className="col s10">
-                                    <div className="card-panel white hoverable">
+                                    <div className="card small white hoverable">
                                         <div className="row valign-wrapper">
                                             <div className="col s2">
                                                 <img src={tutor.profileImage ? tutor.profileImage : `https://via.placeholder.com/150`} alt="" className="circle responsive-img" />
@@ -55,17 +55,22 @@ class Remote extends React.Component {
                                                 <span className="black-text">
                                                     <h4>{tutor.first_name}{" "}{tutor.last_name}</h4>
                                                     <p>{tutor.bio}</p>
-                                                </span>
-                                            </div>
-                                            <div className="col s2">
-                                                <span className="black-text">
-                                                    <h4>Subjects:</h4>
                                                     <ul className="collection">
                                                         {tutor.subjects.split(",").map(subject => (
                                                             <li className="collection-item" key={subject}>{subject}</li>
                                                         ))}
                                                     </ul>
                                                 </span>
+                                            </div>
+                                            <div className="col s2">
+                                                {/* <span className="black-text">
+                                                    <h4>Subjects:</h4>
+                                                    <ul className="collection">
+                                                        {tutor.subjects.split(",").map(subject => (
+                                                            <li className="collection-item" key={subject}>{subject}</li>
+                                                        ))}
+                                                    </ul>
+                                                </span> */}
 
                                                 {/* <!-- Modal Trigger --> */}
                                                 <a className="waves-light btn modal-trigger" href={"#" + tutor.id}>Modal</a>
