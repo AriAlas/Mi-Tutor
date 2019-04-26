@@ -3,11 +3,15 @@ import { Link } from "react-router-dom";
 import Map from "../components/Map";
 import Inperson from "../components/Inperson";
 import M from "materialize-css";
+import API from "../utils/API";
 
 class SearchResults extends Component {
-    componentDidMount() {
-      M.AutoInit()
-    }
+//  display inperson tutors on map
+    
+    
+    // componentDidMount() {
+    //   M.AutoInit()
+    // }
     render() {
         return (
             <div>
@@ -31,6 +35,7 @@ class SearchResults extends Component {
                           radius: 10000,
                           title: 'Hello Istanbul!'
                         });
+                        
                       }}
                     ></Map>
                   </div>

@@ -4,6 +4,7 @@ import SearchButton from "../components/SearchButton";
 import Nav from "../components/Nav";
 import API from "../utils/API"
 import SearchResults from "./SearchResults";
+import M from "materialize-css";
 
 class Home extends Component {
     constructor(){
@@ -11,7 +12,8 @@ class Home extends Component {
         this.state = {
           search: "",
           lat:"",
-          lng:""
+          lng:"",
+          tutors: []
         }
     }
 
@@ -21,7 +23,6 @@ class Home extends Component {
         this.setState({
           [name]:value
         }) 
-        console.log(this.state)
     }
       
       searchGeo = ()=>{
@@ -33,12 +34,23 @@ class Home extends Component {
             search:"",
             lat: res.data.results[0].geometry.location.lat,
             lng: res.data.results[0].geometry.location.lng,
-            showMap: true
+            showMap: true,
+            // tutors: res.data.results[0].address
           })
-          console.log(this.state) // shows nothing in console???
+          console.log(this.state) 
         }).catch(err =>{
           return err
         });
+      }
+    
+      loadTutors = () => {
+        API.getInperson().then(res => this.setState({ tutors: res.data }))
+            .catch(err => console.log(err))
+      }
+      componentDidMount = () => {
+        M.AutoInit();
+        this.loadTutors();
+        console.log(this.state)
       }
 
     render() {
@@ -54,7 +66,7 @@ class Home extends Component {
                     </div>
                   </div>
               </div>
-                {this.state.showMap ? <SearchResults lat={this.state.lat} lng={this.state.lng} /> : 
+                {this.state.showMap ? <SearchResults lat={this.state.lat} lng={this.state.lng} tutors={this.state.tutors} /> : 
                 <div></div>
                 }
           </div>
