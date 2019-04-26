@@ -4,25 +4,25 @@ import API from "../../utils/API";
 
 
 class Viewprofile extends React.Component {
-    
-        state = {
-            
-          
-            email: {
-                recipient: "",
-                name: "",
-                sender: "",
-                text: ""
-            
+
+    state = {
+        tutor: "",
+
+        email: {
+            recipient: "",
+            name: "",
+            sender: "",
+            text: ""
+
         }
     }
- 
-   componentDidMount(){
-       const {id} = this.props.location.state
-       console.log(id);
-    API.getOneTutorid(id).then(res => console.log(res))
 
-   }
+    componentDidMount() {
+        const { id } = this.props.location.state
+        console.log(id);
+        API.getOneTutorid(id).then(res => this.setState({ tutor: res.data }, function () { console.log(this.state.tutor) }))
+
+    }
     // onClickForm = e => {
     //     // e.preventDefault();
     //     // const recipient = e.target.name;
@@ -40,7 +40,20 @@ class Viewprofile extends React.Component {
 
         return (
 
-<div>{this.props.location.state.id}</div>
+            <div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col s6">
+                            
+
+                        </div>
+                        <div className="col s6">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         )
     }
 }
