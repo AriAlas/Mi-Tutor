@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import jwt_decode from "jwt-decode";
 import { Link } from "react-router-dom";
 import API from "../../utils/API"
-import LargeForm from "../EditProfile"
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import M from "materialize-css";
 
@@ -63,6 +62,11 @@ class Profile extends Component {
             )
             .catch(err => console.log(err));
     }
+    logOut=e=>{
+        e.preventDefault();
+        localStorage.removeItem("userToken");
+        window.location.href="/";
+      }
     onChangeImage = e => {
         this.setState({file: e.target.files}, function(){
             console.log(this.state.file[0])
@@ -177,7 +181,7 @@ class Profile extends Component {
                             <li><Link to="/about">About</Link></li>
                             {/* If Authenticated This <a> tag is Profile */}
                             {/* If NOT authenticated this tag is  LOGIN*/}
-                            <li><Link to="/tutors">LogOut</Link></li>
+                            <li><a onClick={this.logOut} to="/">LogOut</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -185,7 +189,7 @@ class Profile extends Component {
                     <li><Link to="/about">About</Link></li>
                     {/* If Authenticated This <a> tag is Profile */}
                     {/* If NOT authenticated this tag is  LOGIN*/}
-                    <li><Link to="/tutors">LogOut</Link></li>
+                    <li><a onClick={this.logOut}to="/tutors">LogOut</a></li>
                 </ul>
 
                 {/* This is the profile picture */}

@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Remote from "./components/Remote";
 import SearchResults from './pages/SearchResults';
+import Viewprofile from './components/Viewprofile';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/remote" component={Remote} />
+            <Route  path="/viewprofile" component={Viewprofile} />
 
           </Switch>
         </div>
