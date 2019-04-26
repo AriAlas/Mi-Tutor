@@ -1,24 +1,30 @@
-import React from "react";
+import React, { Component } from "react";
 
-function SearchBar(props) {
-
+class SearchBar extends Component {
+  constructor() {
+    super()
+    this.state = {
+      search:""
+    }
+  }
+  render() {
+    
     return (
       <div className="row">
         <form className="col s12">
           <div className="row">
             <div className="input-field col s3">
               <input placeholder="Zip Code" id="zipCode" type="input" className="validate"
-               name={props.name}
-               value={props.value} 
-                onChange={e=> props.handleInput(e)}
+               name={this.props.name}
+               value={this.props.value} 
+                onChange={e=> this.props.handleInput(e)}
                  ></input>
             </div>
           </div>
         </form>
       </div>
     );
+    }
 }
 
 export default SearchBar;
-
-//  params={{zipCode: test}}

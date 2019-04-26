@@ -66,7 +66,7 @@ class Remote extends React.Component {
 
                             <div className="row" key={tutor.id}>
                                 <div className="col s10">
-                                    <div className="card-panel white hoverable">
+                                    <div className="card small white hoverable">
                                         <div className="row valign-wrapper">
                                             <div className="col s2">
                                                 <img src={tutor.profileImage ? tutor.profileImage : `https://via.placeholder.com/150`} alt="" className="circle responsive-img" />
@@ -75,6 +75,11 @@ class Remote extends React.Component {
                                                 <span className="black-text">
                                                     <h4>{tutor.first_name}{" "}{tutor.last_name}</h4>
                                                     <p>{tutor.bio}</p>
+                                                    <ul className="collection">
+                                                        {tutor.subjects.split(",").map(subject => (
+                                                            <li className="collection-item" key={subject}>{subject}</li>
+                                                        ))}
+                                                    </ul>
                                                 </span>
                                             </div>
 
