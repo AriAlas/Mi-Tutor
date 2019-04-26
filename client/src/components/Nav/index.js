@@ -11,7 +11,7 @@ class Nav extends React.Component {
   logOut(e){
     e.preventDefault();
     localStorage.removeItem("userToken");
-    this.props.history.push("/");
+    window.location.href="/";
   }
  
 
@@ -22,21 +22,21 @@ class Nav extends React.Component {
     )
   // this is the nav bar when the user is logged in
     const userLink = (
-        <li><a href="" onClick={this.logOut.bind(this)}>LogOut</a></li>
+        <li><a href="" onClick={this.logOut}>LogOut</a></li>
     )
     
 
   return (
     <div>
     <nav>
-      <div className="nav-wrapper">
+      <div className="nav-wrapper teal lighten-2">
         <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
         <Link to="/" className="brand-logo">MiTutor</Link>
         <ul className="right hide-on-med-and-down">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/tutors">Tutors</Link></li>
-          {localStorage.usertoken ? userLink : loginLink}
+          {localStorage.userToken ? userLink : loginLink}
           </ul>
       </div>
       </nav>
@@ -44,7 +44,7 @@ class Nav extends React.Component {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>
         <li><Link to="/tutors">Tutors</Link></li>
-        {localStorage.usertoken ? userLink : loginLink}
+        {localStorage.userToken ? userLink : loginLink}
       </ul>
     </div>
   )
