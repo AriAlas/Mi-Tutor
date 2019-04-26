@@ -10,9 +10,9 @@ const multiparty = require('multiparty');
 // email feature dependencies
 const sgMail = require("@sendgrid/mail");
 //configure API key for Sendgrid
-sgMail.setApiKey(process.env.SGMAIL_KEY);
+sgMail.setApiKey("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");
 
-users.get("/send=email", (req, res)=>{
+users.get("/send", (req, res)=>{
     const {recipient, name, sender, text} = req.query;
 // sendgrid requirements
     const msg = {
@@ -20,16 +20,19 @@ users.get("/send=email", (req, res)=>{
         from: sender,
         subject: name,
         text: text
-    }
-      sgMail.send(msg).then(msg => console.log(msg));
-})
+    };
+      sgMail.send(msg).then(() => {res.status(200).send("Hello World").end();
+    }).catch(e=>{console.error(e.toString());
+    res.status(500).end();
+});
+});
 
 
 
 // configure the keys for accessing AWS
 AWS.config.update({
- accessKeyId: "AKIAIVGVNBJMRYCMPPUQ",
- secretAccessKey: "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"
+ accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+ secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 });
 
 // configure AWS to work with promises
@@ -63,10 +66,10 @@ users.get("/tutor/:email", (req, res)=>{
     }).then(tutor => res.json(tutor));
 })
 //get me a tutor by id
-users.get("/tutor/:id", (req, res)=>{
+users.get("/tutorid/:id", (req, res)=>{
     db.User.findOne({
         where: {
-            id: req.params.email
+            id: req.params.id
         }
     }).then(tutor => res.json(tutor));
 })

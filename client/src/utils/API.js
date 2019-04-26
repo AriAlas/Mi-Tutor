@@ -7,7 +7,7 @@ export default {
         return axios.get("/api/tutor/" + email);
     },
     getOneTutorid: function(id){
-        return axios.get("/api/tutor/" + id);
+        return axios.get("/api/tutorid/" + id);
     },
     updateTutor: function(id, data){
         return axios.put("/api/tutor/"+id, data)
@@ -31,7 +31,9 @@ export default {
         })
     },
     sendgrid: function(data){
-        return axios.get("/api//send=email/" + data)
+        return axios.get("/api/send", data)
+        
+     
     }
 
 }
