@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import SearchBar from "../components/SearchBar";
 import SearchButton from "../components/SearchButton";
 import Nav from "../components/Nav";
-import Map from "../components/Map";
 import API from "../utils/API"
 import SearchResults from "./SearchResults";
 
@@ -14,7 +13,7 @@ class Home extends Component {
           lat:"",
           lng:""
         }
-      }
+    }
 
     handleInput = (event) =>{
         const value = event.target.value;
@@ -23,7 +22,7 @@ class Home extends Component {
           [name]:value
         }) 
         console.log(this.state)
-      }
+    }
       
       searchGeo = ()=>{
         console.log("test")
@@ -43,24 +42,23 @@ class Home extends Component {
       }
 
     render() {
-    return (
-        <div>
-          {/* <button onClick={this.searchGeo}/> */}
-        <Nav />
-            <div className="container">
-                <div className="card">
-                <div className="card-content">
-                    <span className="card-title">Find tutors near you!</span>               
-                    <SearchBar handleInput={this.handleInput} value={this.state.search} name="search"></SearchBar>
-                    <SearchButton searchGeo={this.searchGeo} value={this.state.lat} ></SearchButton>
-                </div>
-                </div>
-            </div>
-            {this.state.showMap ? <SearchResults lat={this.state.lat} lng={this.state.lng} /> : 
-          <div></div>
-          }
-        </div>
-    );
+      return (
+          <div>
+          <Nav />
+              <div className="container">
+                  <div className="card">
+                    <div className="card-content">
+                        <span className="card-title">Find tutors near you!</span>               
+                        <SearchBar handleInput={this.handleInput} value={this.state.search} name="search"></SearchBar>
+                        <SearchButton searchGeo={this.searchGeo} value={this.state.lat} ></SearchButton>
+                    </div>
+                  </div>
+              </div>
+                {this.state.showMap ? <SearchResults lat={this.state.lat} lng={this.state.lng} /> : 
+                <div></div>
+                }
+          </div>
+      );
     }
 }
 

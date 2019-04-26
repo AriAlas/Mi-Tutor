@@ -28,5 +28,3 @@ class SearchBar extends Component {
 }
 
 export default SearchBar;
-
-//  params={{zipCode: test}}
