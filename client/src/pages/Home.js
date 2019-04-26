@@ -10,6 +10,7 @@ class Home extends Component {
     constructor(){
         super()
         this.state = {
+          
           search: "",
           lat:"",
           lng:"",
@@ -44,7 +45,7 @@ class Home extends Component {
       }
     
       loadTutors = () => {
-        API.getAddress().then(res => this.setState({ tutors: res.data }))
+        API.getInperson().then(res => res.data.map(tutor => console.log(tutor.address)))
             .catch(err => console.log(err))
       }
       
