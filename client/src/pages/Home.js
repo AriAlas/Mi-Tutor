@@ -44,9 +44,10 @@ class Home extends Component {
       }
     
       loadTutors = () => {
-        API.getInperson().then(res => this.setState({ tutors: res.data }))
+        API.getAddress().then(res => this.setState({ tutors: res.data }))
             .catch(err => console.log(err))
       }
+      
       componentDidMount = () => {
         M.AutoInit();
         this.loadTutors();
