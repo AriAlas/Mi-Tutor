@@ -3,14 +3,17 @@ import { Link } from "react-router-dom";
 
 
 
-function SearchButton() {
+class SearchButton extends React.Component {
+
+  render() {
   return(
-    <Link to="/search-results">
-    <button className="btn waves-effect waves-light" type="submit" id="clickSearch" name="action">search
+    // <Link to="/search-results">
+    <button onClick={this.props.searchGeo} className="btn waves-effect waves-light" type="submit" id="clickSearch" name="action">search
       <i className="material-icons right">search</i>
     </button>
-    </Link>
+    // </Link>
   );
+  }
 }
 
 

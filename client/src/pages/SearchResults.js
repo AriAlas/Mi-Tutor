@@ -9,14 +9,14 @@ import Inperson from "../components/Inperson";
 import M from "materialize-css";
 
 class SearchResults extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      search: "",
-      lat:"",
-      lng:""
-    }
-  }
+  // constructor(props){
+  //   super(props)
+  //   this.state = {
+  //     search: "",
+  //     lat:"",
+  //     lng:""
+  //   }
+  // }
     // constructor(){
     //   super()
     //   this.state = {
@@ -53,7 +53,7 @@ class SearchResults extends Component {
     render() {
         return (
             <div>
-                <Nav></Nav>
+                {/* <Nav></Nav> */}
                 <div className="row">
                   <div className="col s6">
                     {/* <SearchBar handleInput={this.handleInput} value={this.state.search} name="search"/> */}
@@ -61,13 +61,19 @@ class SearchResults extends Component {
                     <Map
                       id="myMap"
                       options={{
-                        center: { lat: this.state.lat.length ? this.state.lat : 41.0082, lng: this.state.lng.length ? this.state.lng : 28.9784 },
+                        center: { lat: this.props.lat ? this.props.lat : 41.0082, lng: this.props.lng ? this.props.lng : 28.9784 },
                         zoom: 8
                       }}
                       onMapLoad={map => {
-                        var marker = new window.google.maps.Marker({
-                          position:  { lat: this.state.lat.length ? this.state.lat : 41.0082, lng: this.state.lng.length ? this.state.lng : 28.9784 },
+                        var circle = new window.google.maps.Circle({
+                          center:  { lat: this.props.lat ? this.props.lat : 41.0082, lng: this.props.lng ? this.props.lng : 28.9784 },
                           map: map,
+                          strokeColor: '#FF0000',
+                          strokeOpacity: 0.8,
+                          strokeWeight: 2,
+                          fillColor: '#FF0000',
+                          fillOpacity: 0.35,
+                          radius: 5000,
                           title: 'Hello Istanbul!'
                         });
                       }}
