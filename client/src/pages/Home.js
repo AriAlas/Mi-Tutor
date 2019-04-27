@@ -10,7 +10,6 @@ class Home extends Component {
     constructor(){
         super()
         this.state = {
-          
           search: "",
           lat:"",
           lng:"",
@@ -45,14 +44,15 @@ class Home extends Component {
       }
     
       loadTutors = () => {
-        API.getInperson().then(res => res.data.map(tutor => console.log(tutor.address)))
+        API.getInperson().then(res => res.data.map(tutors => console.log(tutors.address)))
             .catch(err => console.log(err))
+            
       }
       
       componentDidMount = () => {
-        M.AutoInit();
         this.loadTutors();
         console.log(this.state)
+        M.AutoInit();
       }
 
     render() {

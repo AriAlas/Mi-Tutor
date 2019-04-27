@@ -9,9 +9,9 @@ class SearchResults extends Component {
 //  display inperson tutors on map
     
     
-    // componentDidMount() {
-    //   M.AutoInit()
-    // }
+    componentDidMount() {
+      M.AutoInit()
+    }
     render() {
         return (
             <div>
@@ -35,7 +35,6 @@ class SearchResults extends Component {
                           radius: 10000,
                           title: 'Hello Istanbul!'
                         });
-                        
                       }}
                     ></Map>
                   </div>
