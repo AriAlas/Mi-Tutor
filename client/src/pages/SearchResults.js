@@ -6,6 +6,7 @@ import M from "materialize-css";
 import API from "../utils/API";
 
 class SearchResults extends Component {
+
 //  display inperson tutors on map
     
     
@@ -16,7 +17,7 @@ class SearchResults extends Component {
         return (
             <div>
                 <div className="row">
-                  <div className="col s6">
+                  <div className="col s12 m6">
                     <Map
                       id="myMap"
                       options={{
@@ -38,7 +39,7 @@ class SearchResults extends Component {
                       }}
                     ></Map>
                   </div>
-                    <div className="col s6 right">
+                    <div className="col s12 m6 right">
                       <div>
                         <h6>Tutors in your area:</h6>
                         <Inperson></Inperson>
@@ -50,9 +51,13 @@ class SearchResults extends Component {
                       </div>
                       </div> 
                   </div>
+
             </div>
-        )
-    };
+          </div>
+        </div>
+      </div>
+    )
+  };
 }
 
 export default SearchResults;
