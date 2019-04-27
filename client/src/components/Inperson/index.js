@@ -11,22 +11,31 @@ class Inperson extends Component {
             .catch(err => console.log(err))
     }
     componentDidMount = () => {
-        M.AutoInit();
         this.loadTutors();
+        M.AutoInit();
+    }
+    collectionStyle = {
+        minHeight: "150px"
+    }
+    imgStyle = {
+        height: "100px",
+        width: "100px"
     }
     render() {
         return (
         <div>
         {this.state.tutors.map(tutor => (
         <div key={tutor.id}>
-        <ul className="collection">
-            <li className="collection-item avatar">
-                <img src={tutor.profileImage ? tutor.profileImage : `https://via.placeholder.com/150`} alt="" className="circle"></img>
-                    <span className="title">{tutor.first_name}{" "}{tutor.last_name}</span>
-                        <p>{tutor.bio}<br></br>
-                        {tutor.subjects}
-                        </p>
-                        <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
+        <ul className="collection grey lighten-5 z-depth-1">
+            <li className="collection-item avatar valign-wrapper" style={this.collectionStyle}>
+                <img src={tutor.profileImage ? tutor.profileImage : `https://via.placeholder.com/150`} alt="" className="circle" style={this.imgStyle} ></img>
+                    <div className="container">
+                        <span className="title">{tutor.first_name}{" "}{tutor.last_name}</span>
+                            <p>{tutor.bio}<br></br>
+                            {tutor.subjects}
+                            </p>
+                            <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
+                    </div>
             </li>
         </ul>
         </div>
