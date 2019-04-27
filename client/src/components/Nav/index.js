@@ -29,19 +29,20 @@ class Nav extends React.Component {
 
   return (
     <div>
-    <nav className="teal lighten-2 main-nav nav-extended">
+    <nav className="teal lighten-2 main-nav">
       <div className="nav-wrapper">
         <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
         <Link to="/" className="brand-logo">MiTutor</Link>
-        </div>
-        <div class="nav-content">
         <ul className="right hide-on-med-and-down">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/tutors">Tutors</Link></li>
           {localStorage.userToken ? userLink : loginLink}
           </ul>
-      </div>
+        </div>
+       
+        
+      
       </nav>
       <ul className="sidenav" id="mobile-demo">
         <li><Link to="/">Home</Link></li>
