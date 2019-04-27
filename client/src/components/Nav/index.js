@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import M from "materialize-css";
+import "./style.css"
 
 class Nav extends React.Component {
   componentDidMount() {
@@ -28,10 +29,12 @@ class Nav extends React.Component {
 
   return (
     <div>
-    <nav>
-      <div className="nav-wrapper teal lighten-2">
+    <nav className="teal lighten-2 main-nav nav-extended">
+      <div className="nav-wrapper">
         <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
         <Link to="/" className="brand-logo">MiTutor</Link>
+        </div>
+        <div class="nav-content">
         <ul className="right hide-on-med-and-down">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/about">About</Link></li>

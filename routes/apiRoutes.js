@@ -13,7 +13,7 @@ const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey("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");
 
 users.get("/send", (req, res)=>{
-    const {recipient, name, sender, text} = req.query;
+    const {recipient, name, sender, text} = req.body;
 // sendgrid requirements
     const msg = {
         to: recipient,

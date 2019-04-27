@@ -109,6 +109,7 @@ class Profile extends Component {
     }
 
     onChangeSubjects = (e) => {
+        console.log(e);
         var value = e.target.value;
         var subjects = this.state.subjects;
 
@@ -118,17 +119,19 @@ class Profile extends Component {
         else{subjects.pop(value)}
        
         console.log("index", index);
+        console.log("value", value);
 
         this.setState({ subjects: subjects, lastclickedoption: value })
 
     }
     onClickSubjects = (e) => {
+        // console.log(e);
         e.preventDefault();
 
         var id = this.state.id;
 
         var mysubjects = this.state.subjects
-
+        console.log("current subjects", mysubjects);
 
         var data = {
             subjects: mysubjects.join(",")
@@ -139,6 +142,7 @@ class Profile extends Component {
             .catch(err => console.log(err));
 
     }
+
 
     onChangePersonal = e => {
         var name = e.target.name;
@@ -202,7 +206,7 @@ class Profile extends Component {
                                 <div className="card hoverable">
                                     <div className="card-image">
                                         <img src={this.state.profileImage ? this.state.profileImage : "https://via.placeholder.com/150"} />
-                                        <span className="card-title black-text">{this.state.first_name}{" "}{this.state.last_name}</span>
+                                        <span className="card-title white-text">{this.state.first_name}{" "}{this.state.last_name}</span>
 
 
 

@@ -40,15 +40,7 @@ class Remote extends React.Component {
 
 
     
-        // const data ={
-        //     recipient:this.state.email.recipient,
-        //     name:this.state.email.name,
-        //     sender: this.state.email.sender,
-        //     text:this.state.email.text
-        // }
-        // API.sendgrid(data)
-        // .then(res => console.log(res))
-        // .catch(err => console.log(err));
+    
 
     
 
