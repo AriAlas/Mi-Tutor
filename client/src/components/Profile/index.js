@@ -109,17 +109,25 @@ class Profile extends Component {
     }
 
     onChangeSubjects = (e) => {
-        var value = e.target.value;
-        var subjects = this.state.subjects;
+        var options = e.target.options;
+        var value = [];
+        for (var i = 0; i < options.length; i++){
+            if(options[i].selected){
+                value.push(options[i].value);
+            }
+        }
+        this.setState({subjects:value});
+        // var value = e.target.value;
+        // var subjects = this.state.subjects;
 
-        // console.log(subjects);
-        var index = subjects.indexOf(value);
-        if (index === -1) { subjects.push(value) }
-        else{subjects.pop(value)}
+        // // console.log(subjects);
+        // var index = subjects.indexOf(value);
+        // if (index === -1) { subjects.push(value) }
+        // else{subjects.pop(value)}
        
-        console.log("index", index);
+        // console.log("index", index);
 
-        this.setState({ subjects: subjects, lastclickedoption: value })
+        // this.setState({ subjects: subjects, lastclickedoption: value })
 
     }
     onClickSubjects = (e) => {
