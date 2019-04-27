@@ -10,17 +10,20 @@ const multiparty = require('multiparty');
 // email feature dependencies
 const sgMail = require("@sendgrid/mail");
 //configure API key for Sendgrid
-sgMail.setApiKey("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");
+sgMail.setApiKey(process.env.SGMAIL_KEY);
 
-users.get("/send", (req, res)=>{
+users.post("/send", (req, res)=>{
+
     const {recipient, name, sender, text} = req.body;
 // sendgrid requirements
+console.log(req.body);
     const msg = {
         to: recipient,
         from: sender,
         subject: name,
         text: text
     };
+    console.log(msg);
       sgMail.send(msg).then(() => {res.status(200).send("Hello World").end();
     }).catch(e=>{console.error(e.toString());
     res.status(500).end();

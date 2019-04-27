@@ -65,7 +65,7 @@ class Viewprofile extends React.Component {
 
                 <div>
                     <Nav />
-                    <div className="container">
+                    
                         <div className="row">
                             <div className="col s12 m4">
 
@@ -164,7 +164,7 @@ class Viewprofile extends React.Component {
                         </div>
                     </div>
 
-                </div>
+               
             )
         }
     }

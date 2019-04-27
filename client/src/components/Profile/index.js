@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import API from "../../utils/API"
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import M from "materialize-css";
+import Nav from "../Nav"
 
 class Profile extends Component {
     constructor() {
@@ -184,24 +185,25 @@ class Profile extends Component {
         return (
 
             <div>
-                <nav>
-                    <div className="nav-wrapper">
-                        <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
-                        <Link to="/" className="brand-logo">MiTutor</Link>
-                        <ul className="right hide-on-med-and-down">
-                            <li><Link to="/about">About</Link></li>
+                <Nav />
+                {/* <nav> */}
+                    {/* <div className="nav-wrapper teal lighten-2"> */}
+                        {/* <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a> */}
+                        {/* <Link to="/" className="brand-logo">MiTutor</Link> */}
+                        {/* <ul className="right hide-on-med-and-down"> */}
+                            {/* <li><Link to="/about">About</Link></li> */}
                             {/* If Authenticated This <a> tag is Profile */}
                             {/* If NOT authenticated this tag is  LOGIN*/}
-                            <li><a onClick={this.logOut} to="/">LogOut</a></li>
+                            {/* <li><a onClick={this.logOut} to="/">LogOut</a></li>
                         </ul>
                     </div>
-                </nav>
-                <ul className="sidenav" id="mobile-demo">
-                    <li><Link to="/about">About</Link></li>
+                </nav> */}
+                {/* <ul className="sidenav" id="mobile-demo">
+                    <li><Link to="/about">About</Link></li> */}
                     {/* If Authenticated This <a> tag is Profile */}
                     {/* If NOT authenticated this tag is  LOGIN*/}
-                    <li><a onClick={this.logOut}to="/tutors">LogOut</a></li>
-                </ul>
+                    {/* <li><a onClick={this.logOut}to="/tutors">LogOut</a></li>
+                </ul> */}
 
                 {/* This is the profile picture */}
                 <section className="section">
