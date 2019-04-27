@@ -17,9 +17,6 @@ function About() {
                 <br></br>
                 <h5>MiTutor was created to fill a need in Spanish-speaking communities across the US who may struggle with their education due to language barriers. We aim to provide quality and affordable tutoring services to families who may not be able to access additional learning support otherwise.</h5>
             </Hero>
-            <p>
-                Inspired to help.....
-            </p>
         </div> 
     );
 }
