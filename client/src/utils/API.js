@@ -31,7 +31,7 @@ export default {
         })
     },
     sendgrid: function(data){
-        return axios.get("/api/send", data)
+        return axios.post("/api/send/", data)
         
      
     }
