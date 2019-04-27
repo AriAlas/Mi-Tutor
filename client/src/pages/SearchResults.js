@@ -52,9 +52,6 @@ class SearchResults extends Component {
                       </div> 
                   </div>
             </div>
-
-       
-
     )
   };
 }
