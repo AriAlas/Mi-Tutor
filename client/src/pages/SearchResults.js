@@ -26,7 +26,7 @@ class SearchResults extends Component {
                       }}
                       onMapLoad={map => {
                         var circle = new window.google.maps.Circle({
-                          center:  { lat: this.props.lat ? this.props.lat : 41.0082, lng: this.props.lng ? this.props.lng : 28.9784 },
+                          center:  { lat: this.props.tutorlat ? this.props.lat : 41.0082, lng: this.props.tutorlng ? this.props.lng : 28.9784 },
                           map: map,
                           strokeColor: '#FF0000',
                           strokeOpacity: 0.8,
