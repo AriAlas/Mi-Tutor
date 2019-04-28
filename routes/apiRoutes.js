@@ -98,16 +98,13 @@ users.get("/inperson", (req, res)=> {
     }).then(tutors => res.json(tutors)).catch(err => console.log(err));
 })
 
-// get all users with an address 
-users.get("/address", (req, res)=> {
+users.get("/inpersontutor", (req, res)=> {
     db.User.findAll({
         where: {
-            address: true
+            inperson: true
         }
-    }).then(tutors => res.json(tutors))
-    .catch(err => console.log(err));
+    }).then(tutor => res.json(tutor)).catch(err => console.log(err));
 })
-
 
 users.post("/imageupload/", (req, res)=>{
     

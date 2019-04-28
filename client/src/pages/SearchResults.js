@@ -6,8 +6,6 @@ import M from "materialize-css";
 import API from "../utils/API";
 
 class SearchResults extends Component {
-
-//  display inperson tutors on map
     
     
     componentDidMount() {

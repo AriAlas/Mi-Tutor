@@ -58,33 +58,11 @@ class Home extends Component {
       }
       // get tutor addresses from database
       loadTutors = () => {
-        API.getInperson().then(res => res.data.map(tutor =>{
-          console.log(tutor.address)
-          return (
-          this.setState({
-            tutor: tutor.address
-          })
-          )
-          console.log(this.setState)
-        })).catch(err =>{ 
-          return err 
-        } 
-        )};
-        // older *
-        // loadTutors = () => {
-        //   API.getInperson().then(res => res.data.map(tutor =>{
-        //     console.log(tutor.address)
-        //     return (
-        //     this.setState({
-        //       tutor: tutor.address
-        //     })
-        //     )
-        //     console.log(this.setState)
-        //   })).catch(err =>{ 
-        //     return err 
-        //   } 
-        //   )};
-      //  *
+        API.getInpersonTutor().then(res => res.data.map(tutor => this.setState({tutor: tutor.address})))
+            .catch(err => console.log(err))
+            console.log(this.state)    
+      }
+      
       componentDidMount = () => {
         this.loadTutors();
         console.log(this.state)

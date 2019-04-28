@@ -18,8 +18,8 @@ export default {
     getInperson: function(){
         return axios.get("/api/inperson/");
     },
-    getAddress: function(){
-        return axios.get("/api/address/");
+    getInpersonTutor: function(){
+        return axios.get("/api/inpersontutor/");
     },
     getFromGeo: function(search){
         return axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${search}&key=AIzaSyBBU1xVisZcgNbmIYreSZJEfrfGTFV18-k`)
