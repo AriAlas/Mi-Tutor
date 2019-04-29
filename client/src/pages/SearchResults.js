@@ -96,13 +96,6 @@ class SearchResults extends Component {
                             map: map,
                             title: markers[i][0]
                           });
-         
-         
-         
-         
-         
-         
-         
                           {/* var latLng = new window.google.maps.LatLng(location1lat);
                             var marker = new window.google.maps.Marker({
                               position: latLng,
