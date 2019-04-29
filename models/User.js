@@ -29,7 +29,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         
-        Date_of_birth: {
+        date_of_birth: {
             type: DataTypes.DATEONLY,
             allowNull: true
         },
@@ -64,6 +64,14 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.STRING,
             allowNull: true,
 
+        },
+        lat: {
+            type: DataTypes.DECIMAL(8,6),
+            allowNull: true
+        },
+        lng: {
+            type: DataTypes.DECIMAL(8,6),
+            allowNull: true
         },
         profileImage: {
             type: DataTypes.STRING,

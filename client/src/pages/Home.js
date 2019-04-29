@@ -13,7 +13,9 @@ class Home extends Component {
           search: "",
           lat:"",
           lng:"",
-          tutors: []
+          tutors: [],
+          tutorlat: "",
+          tutorlng: "",
         }
     }
 
@@ -42,6 +44,20 @@ class Home extends Component {
           return err
         });
       }
+      //   // get latitude and longitude of returned tutor address
+      //   API.getFromGeo(this.state.tutor).then((res)=>{
+      //     console.log(res.data.results[0].geometry.location.lat)
+      //     console.log(res.data.results[0].geometry.location.lng)
+      //     this.setState({
+      //       tutorlat: res.data.results[0].geometry.location.lat,
+      //       tutorlng: res.data.results[0].geometry.location.lng,
+      //       showMap: true,
+      //     })
+      //     console.log(this.state)
+      //   }).catch(err =>{
+      //     return err
+      //   });
+      // }
     
       loadTutors = () => {
         API.getInperson().then(res => res.data.map(tutors => console.log(tutors.address)))
@@ -50,8 +66,9 @@ class Home extends Component {
       }
       
       componentDidMount = () => {
-        this.loadTutors();
-        console.log(this.state)
+
+        // this.loadTutors();
+        console.log(this.state, "on home page load")
         M.AutoInit();
       }
 
@@ -68,7 +85,7 @@ class Home extends Component {
                     </div>
                   </div>
               </div>
-                {this.state.showMap ? <SearchResults lat={this.state.lat} lng={this.state.lng} tutors={this.state.tutors} /> : 
+                {this.state.showMap ? <SearchResults lat={this.state.lat} lng={this.state.lng} tutorlat={this.state.tutorlat} tutorlng={this.state.tutorlng} /> : 
                 <div></div>
                 }
           </div>
