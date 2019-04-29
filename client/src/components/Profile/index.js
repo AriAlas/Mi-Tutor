@@ -22,6 +22,8 @@ class Profile extends Component {
             profileImage: "",
             file: "",
             address: "",
+            lat: "",
+            lng: "",
             lastclickedoption: []
 
         }
@@ -56,7 +58,9 @@ class Profile extends Component {
                 inperson: tutor.data.inperson,
                 subjects: tutor.data.subjects ? tutor.data.subjects.split(",") : [],
                 profileImage: tutor.data.profileImage,
-                address: tutor.data.address
+                address: tutor.data.address,
+                lat: tutor.data.lat,
+                lng: tutor.data.lng
             }, function(){
                 console.log("updated state",this.state)
             })
@@ -171,16 +175,49 @@ class Profile extends Component {
             Date_of_birth: this.state.Date_of_birth,
             remote: this.state.remote,
             inperson: this.state.inperson,
-            address: this.state.address
-
+            address: this.state.address,
+            lat: this.state.lat,
+            lng: this.state.lng
         }
-        console.log(data)
-
+        console.log(data, "going to db")
+        // this.searchGeo();
+        
         API.updateTutor(id, data)
             .then(res => console.log(res))
-            .catch(err => console.log(err));
+            .then(API.getFromGeo(this.state.address).then(res => { 
+                console.log(res.data, "is this a decimal")
+               var data2 = {
+                lat: res.data.results[0].geometry.location.lat,
+                lng: res.data.results[0].geometry.location.lng,
+               }
+                API.updateTutor(id, data2).then(res => console.log(res))
+                .catch(err => console.log(err))
+            }));
+            console.log(this.state.address, "in updatetutor")
+            // this.searchGeo()
     }
+    
 
+    // searchGeo = ()=>{
+    //         console.log("address test")
+    //         API.getFromGeo(this.state.address).then((res)=>{
+    //             console.log(res.data.results[0].geometry.location.lat)
+    //             console.log(res.data.results[0].geometry.location.lng)
+    //             this.setState({
+    //             lat: res.data.results[0].geometry.location.lat,
+    //             lng: res.data.results[0].geometry.location.lng,
+    //             })
+    //             console.log(this.state) 
+    //         })
+            // }).then(()=>{
+        //         console.log("within promise")
+        //         API.updateTutor(id, data)
+        //     .then(res => console.log(res))
+        //     .catch(err => console.log(err));
+        //     });
+        
+
+       
     render() {
         return (
 

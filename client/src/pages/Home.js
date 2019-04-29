@@ -13,9 +13,9 @@ class Home extends Component {
           search: "",
           lat:"",
           lng:"",
-          tutor: [],
-          tutorlat: [],
-          tutorlng: []
+          tutors: [],
+          tutorlat: "",
+          tutorlng: "",
         }
     }
 
@@ -29,7 +29,6 @@ class Home extends Component {
       
       searchGeo = ()=>{
         console.log("test")
-        // get latitude and longitude of user input
         API.getFromGeo(this.state.search).then((res)=>{
           console.log(res.data.results[0].geometry.location.lat)
           console.log(res.data.results[0].geometry.location.lng)
@@ -38,34 +37,38 @@ class Home extends Component {
             lat: res.data.results[0].geometry.location.lat,
             lng: res.data.results[0].geometry.location.lng,
             showMap: true,
+            // tutors: res.data.results[0].address
           })
-          console.log(this.state)
-        }).catch(err =>{
-          return err
-        });
-        // get latitude and longitude of returned tutor address
-        API.getFromGeo(this.state.tutor).then((res)=>{
-          console.log(res.data.results[0].geometry.location.lat)
-          console.log(res.data.results[0].geometry.location.lng)
-          this.setState({
-            tutorlat: res.data.results[0].geometry.location.lat,
-            tutorlng: res.data.results[0].geometry.location.lng,
-          })
-          console.log(this.state)
+          console.log(this.state) 
         }).catch(err =>{
           return err
         });
       }
-      // get tutor addresses from database
+      //   // get latitude and longitude of returned tutor address
+      //   API.getFromGeo(this.state.tutor).then((res)=>{
+      //     console.log(res.data.results[0].geometry.location.lat)
+      //     console.log(res.data.results[0].geometry.location.lng)
+      //     this.setState({
+      //       tutorlat: res.data.results[0].geometry.location.lat,
+      //       tutorlng: res.data.results[0].geometry.location.lng,
+      //       showMap: true,
+      //     })
+      //     console.log(this.state)
+      //   }).catch(err =>{
+      //     return err
+      //   });
+      // }
+    
       loadTutors = () => {
-        API.getInpersonTutor().then(res => res.data.map(tutor => this.setState({tutor: tutor.address})))
+        API.getInperson().then(res => res.data.map(tutors => console.log(tutors.address)))
             .catch(err => console.log(err))
-            console.log(this.state)    
+            
       }
       
       componentDidMount = () => {
-        this.loadTutors();
-        console.log(this.state)
+
+        // this.loadTutors();
+        console.log(this.state, "on home page load")
         M.AutoInit();
       }
 

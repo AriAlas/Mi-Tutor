@@ -4,27 +4,17 @@ import Nav from "../Nav";
 import API from "../../utils/API";
 import M from "materialize-css"
 
-
-
-
 class Remote extends React.Component {
     constructor() {
         super();
         this.state = {
             tutors: [],
             tutorId: ""
-            
         }
-
-
     }
 
     componentDidMount() {
-
-        // var elems = document.querySelectorAll('.modal');
-        // M.Modal.init(elems, M.options);
         this.loadTutors();
-
         M.AutoInit();
     }
     loadTutors = () => {
@@ -32,79 +22,42 @@ class Remote extends React.Component {
             .catch(err => console.log(err))
     }
     clickHandler = e => {
-     
         const name = e.target.name;
-        
         this.setState({tutorId:name}, function(){console.log(this.state.tutorId)})
     }
 
-
-    
-    
-
-    
-
+    collectionStyle = {
+        minHeight: "150px"
+    }
+    imgStyle = {
+        height: "100px",
+        width: "100px"
+    }
 
     render() {
-        const tutorID = this.state.tutorId
- 
+        const tutorId = this.state.tutorId
+
         return (
-            <div>
-                <Nav />
-                <section className="section">
-                    <div className="container">
-                        {this.state.tutors.map(tutor => (
-
-
-                            <div className="row" key={tutor.id}>
-                                <div className="col s10">
-                                    <div className="card small white hoverable">
-                                        <div className="row valign-wrapper">
-                                            <div className="col s2">
-                                                <img src={tutor.profileImage ? tutor.profileImage : `https://via.placeholder.com/150`} alt="" className="circle responsive-img" />
-                                            </div>
-                                            <div className="col s6">
-                                                <span className="black-text">
-                                                    <h4>{tutor.first_name}{" "}{tutor.last_name}</h4>
-                                                    <p>{tutor.bio}</p>
-                                                    <ul className="collection">
-                                                        {tutor.subjects.split(",").map(subject => (
-                                                            <li className="collection-item" key={subject}>{subject}</li>
-                                                        ))}
-                                                    </ul>
-                                                </span>
-                                            </div>
-
-                                            <div className="col s4">
-                                                <span className="black-text">
-                                                    <h4>Subjects:</h4>
-                                                    <ul className="collection">
-                                                        {tutor.subjects.split(",").map(subject => (
-                                                            <li className="collection-item" key={subject}>{subject}</li>
-                                                        ))}
-                                                    </ul>
-                                                </span>
-                                                {/* <!-- Button redirecting to other component --> */}
-                                              
-                                                        <Link to={{pathname: "viewprofile", state: {id:tutor.id}}}   className="waves-light btn modal-trigger" name={tutor.id} onClick={this.clickHandler} >Contact Me!</Link>
-
-                                                </div>
-                                            
-                                            </div>
-                                        </div>
-                                    </div>
-
+        <div>
+            <Nav />
+                {this.state.tutors.map(tutor => (
+                <div key={tutor.id}>
+                    <ul className="collection grey lighten-5 z-depth-1">
+                        <li className="collection-item avatar valign-wrapper" style={this.collectionStyle}>
+                            <img src={tutor.profileImage ? tutor.profileImage : `https://via.placeholder.com/150`} alt="" className="circle" style={this.imgStyle} ></img>
+                                <div className="container">
+                                    <span className="title">{tutor.first_name}{" "}{tutor.last_name}</span>
+                                        <p>{tutor.bio}<br></br>
+                                        {tutor.subjects}
+                                        </p>
+                                        <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
                                 </div>
-
-                                ))}
-                            </div>
-                       
-                   
-                </section>
-                
-            </div >
+                        </li>
+                    </ul>
+                </div>
+        ))}
+        </div>
         )
     }
-}
-
+};
 export default Remote;
