@@ -94,18 +94,24 @@ constructor(props){
   
     return (
       <div>
+        <div className=" bg-2">
         <div className="row">
-          <div className="col s12 m6">
+          <div className="col s12">
+            
             <Map
               id="myMap"
               options={{
                 center: { lat: this.props.lat ? this.props.lat : 41.0082, lng: this.props.lng ? this.props.lng : 28.9784 },
-                zoom: 8
+                zoom: 10
               }}
               onMapLoad={this.loadTutors}
             ></Map>
           </div>
-          <div className="col s12 m6 right">
+          </div>
+          </div>
+          <div className="container">
+         <div className="row">
+          <div className="col s12">
             <div>
               <h6>Tutors in your area:</h6>
               <Inperson></Inperson>
@@ -117,6 +123,7 @@ constructor(props){
             </div>
           </div>
         </div>
+      </div>
       </div>
     )
   };

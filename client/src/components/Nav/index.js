@@ -29,10 +29,11 @@ class Nav extends React.Component {
 
   return (
     <div>
-    <nav className="teal lighten-2 main-nav">
+    <nav className="transparent lighten-2 main-nav">
       <div className="nav-wrapper">
         <a href="/" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
-        <Link to="/" className="brand-logo">MiTutor</Link>
+        <Link to="/" className="brand-logo"><img className="logo"src="https://cdn.discordapp.com/attachments/546608710420529172/572759451254128670/logoyletra.PNG"></img></Link>
+        
         <ul className="right hide-on-med-and-down">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/about">About</Link></li>

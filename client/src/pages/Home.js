@@ -29,6 +29,8 @@ class Home extends Component {
       
       searchGeo = ()=>{
         console.log("test")
+      
+        
         API.getFromGeo(this.state.search).then((res)=>{
           console.log(res.data.results[0].geometry.location.lat)
           console.log(res.data.results[0].geometry.location.lng)
@@ -74,20 +76,39 @@ class Home extends Component {
 
     render() {
       return (
-          <div>
+        <div className="div">
+          <div className="home-wrapper overlay">
           <Nav />
-              <div className="container">
-                  <div className="card">
-                    <div className="card-content">
-                        <span className="card-title">Find tutors near you!</span>               
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+              <div className="container center-align ">
+                  <div className="card vcenter indigo darken-4 opacity round-corners ">
+                    <div className="card-content ">
+                        <span className="card-title white-text">Find tutors near you!</span>               
                         <SearchBar handleInput={this.handleInput} value={this.state.search} name="search"></SearchBar>
                         <SearchButton searchGeo={this.searchGeo} value={this.state.lat} ></SearchButton>
                     </div>
                   </div>
               </div>
-                {this.state.showMap ? <SearchResults tutors={this.state.tutors} lat={this.state.lat} lng={this.state.lng} tutorlat={this.state.tutorlat} tutorlng={this.state.tutorlng} /> : 
+              
+               
+          </div>
+          <div className="map-wrapper scrollspy" id="map">
+          {this.state.showMap ? <SearchResults tutors={this.state.tutors} lat={this.state.lat} lng={this.state.lng} tutorlat={this.state.tutorlat} tutorlng={this.state.tutorlng} /> : 
                 <div></div>
                 }
+          </div>
+         
           </div>
       );
     }

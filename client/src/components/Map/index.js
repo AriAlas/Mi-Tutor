@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import "./style.css"
 
 class Map extends Component {
   constructor(props) {
@@ -34,13 +35,16 @@ class Map extends Component {
 
   render() {
     return (
-      <div className="row">
-        <div className="col s6 m6">
-        <div className="card">
-          <div style={{ width: 500, height: 500 }} id={this.props.id} />
+      <div className="section">
+      
+       
+        <div className=" center-align">
+        <span className="white-text"><h3>Tutors in your area:</h3></span>
+          <div style={{ width: 700, height: 500 }} id={this.props.id} />
         </div>
+
         </div>
-      </div>
+     
     );
   }
 }
