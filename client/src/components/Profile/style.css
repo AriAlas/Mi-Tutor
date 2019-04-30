@@ -1,0 +1,22 @@
+.profile-wrapper{
+     /* Sizing */
+     width: 100vw;
+     height: 150vh;
+ 
+               /* Background styles */
+               background-image: url("https://i2.wp.com/www.123freevectors.com/wp-content/original/113565-black-and-blue-diagonal-stripes-background-vector.jpg?w=800&q=95");
+     background-color: #071A40;
+     background-size: cover;
+     background-position: center center;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     position: relative;
+}
+
+.cardheigh {
+    height: 320px;
+}
+
+.round-border{
+    border-radius: 20px;
+}

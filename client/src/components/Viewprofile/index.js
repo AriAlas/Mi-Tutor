@@ -1,6 +1,7 @@
 import React from "react";
 import Nav from "../Nav"
 import API from "../../utils/API";
+import "./style.css"
 
 class Viewprofile extends React.Component {
 
@@ -66,13 +67,13 @@ class Viewprofile extends React.Component {
 
             return (
 
-                <div>
-                    <Nav />
+                <div className="viewprofile-wrapper">
+                <Nav />
                         <div className="row">
-                            <div className="col s12 m4">
-                                <span><h3>{this.state.first_name}{" "}{this.state.last_name}</h3></span>
+                            <div className="col s12">
+                               <h3 className="white-text center-align">Contact {this.state.first_name}{" "}{this.state.last_name}</h3>
                                 <div className="row">
-                                    <div className="col s12 m12">
+                                    {/* <div className="col s12 m12">
                                         <div className="card">
                                             <div className="card-image">
                                                 <img src={this.state.profileImage ? this.state.profileImage : "https://via.placeholder.com/150"} alt="profileImage"/>
@@ -90,18 +91,22 @@ class Viewprofile extends React.Component {
                                                 </ul>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
-                            <div className="col s12 m8">
+                            </div>
+                            <div className="row">
+                            <div className="col .hide-on-small-only m3"></div>
+                            <div className="col s12 m6 form">
                                 <div className="section">
                                     <div className="row">
                                         <div className="col s12">
                                             <div className="row">
                                                 <div className="input-field col s12">
                                                     <input type="text"
+
                                                         id="name"
-                                                        className="validate"
+                                                        className="validate white-text"
                                                         name="name"
                                                         onChange={e => this.setState({ email: { ...email, name: e.target.value } })}
                                                     />
@@ -112,7 +117,7 @@ class Viewprofile extends React.Component {
                                                 <div className="input-field col s12">
                                                     <input type="email"
                                                         id="sender"
-                                                        className="validate"
+                                                        className="validate white-text"
                                                         name="sender"
                                                         onChange={e => this.setState({ email: { ...email, sender: e.target.value } })} />
                                                     <label htmlFor="sender">Email</label>
@@ -121,7 +126,7 @@ class Viewprofile extends React.Component {
                                             <div className="row">
                                                 <div className="input-field col s12">
                                                     <textarea id="textarea1"
-                                                        className="materialize-textarea"
+                                                        className="materialize-textarea white-text"
                                                         name="text"
                                                         onChange={e => this.setState({ email: { ...email, text: e.target.value } })}
                                                     ></textarea>
@@ -131,7 +136,7 @@ class Viewprofile extends React.Component {
                                             <div className="emailSent">
                                                 <a className=" blue-text btn-flat btn-large disabled">{ this.state.emailSent }</a>
                                             </div>
-                                            <button className="btn waves-light"
+                                            <button className="btn waves-light btn-lg transparent search-button "
                                                 type="submit"
                                                 name={this.state.tutoremail}
                                                 onClick={this.onClickForm}>Send
@@ -141,7 +146,9 @@ class Viewprofile extends React.Component {
                                     </div>
                                 </div>
                             </div>
+                            <div className="col .hide-on-small-only m3"></div>
                         </div>
+                      
                     </div>               
             )
         }
