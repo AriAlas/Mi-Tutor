@@ -1,0 +1,41 @@
+.bg-tutor{
+
+    /* Sizing */
+    width: 100vw;
+    height: 75vh;
+
+              /* Background styles */
+              background-image: url("https://cdn.discordapp.com/attachments/546608710420529172/572827044208050196/tutorpage.jpg");
+    background-color: #071A40;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+        }
+
+        .tutor-container{
+            background-color: #071A40;
+            opacity: .7;
+            padding-bottom: 40px;
+            border-radius: 10px;
+        }
+
+        .steps-container{
+            height: 75vh;
+            align-content: center !important;
+        }
+        .steps {
+            border: 2px solid skyblue;
+            height: 300px;;
+          width: 300px !important;
+            margin: 10px;
+           
+        }
+        
+        .margin{
+            margin: auto auto !important;
+        }
+       
+  
+        
