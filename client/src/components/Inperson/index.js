@@ -3,7 +3,6 @@ import React, {Component} from "react"
 import { Link } from "react-router-dom"
 import API from "../../utils/API";
 import M from "materialize-css";
-import { Link } from "react-router-dom"
 
 class Inperson extends Component {
     state = {
