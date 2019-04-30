@@ -1,0 +1,74 @@
+  /* *:not(path):not(g) {
+      color:                    hsla(210, 100%, 100%, 0.9) !important;
+      background:               hsla(210, 100%,  50%, 0.5) !important;
+      outline:    solid 0.25rem hsla(210, 100%, 100%, 0.5) !important;
+      box-shadow: none !important;
+  } */
+    .logo {
+
+      padding:10px;
+      }
+
+
+    .home-wrapper  {
+    /* Sizing */
+    width: 100vw;
+    height: 100vh;
+
+              /* Background styles */
+              background-image: url("https://images.pexels.com/photos/1059114/pexels-photo-1059114.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-color: #071A40;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+        }
+        
+            .overlay:before{
+                position: absolute;
+                content:" ";
+                top:0;
+                left:0;
+                width:100%;
+                height:100%;
+                display: block;
+                z-index:0;
+                background-color: rgba(7, 26, 64, .5);
+              }
+              
+        
+
+
+
+        .vcenter {
+
+            /* vertical-align: middle; */
+              align-items: center;
+              display: flex;
+              justify-content: center;
+          }
+
+          .round-corners {
+              border-radius: 10px;
+          }
+          .opacity{
+              opacity: .7;
+          }
+
+     .search-button {
+         color: white;
+         border: 2px solid white;
+
+     }
+
+     .search {
+        margin-bottom: 5px !important;
+     }
+
+     
+
+          
+
+   
+      

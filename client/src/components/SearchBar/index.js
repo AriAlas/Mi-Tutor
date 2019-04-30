@@ -12,13 +12,14 @@ class SearchBar extends Component {
     return (
       <div className="row">
         <form className="col s12">
-          <div className="row">
-            <div className="input-field col s3">
-              <input placeholder="Zip Code" id="zipCode" type="input" className="validate"
+          <div className="row search">
+            <div className="input-field col s12">
+              <input  type="search" placeholder="Enter Zip Code"id="zipCode"  className="validate"
                name={this.props.name}
                value={this.props.value} 
                 onChange={e=> this.props.handleInput(e)}
-                 ></input>
+                 />
+                
             </div>
           </div>
         </form>
