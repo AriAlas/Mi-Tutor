@@ -119,8 +119,8 @@ class SearchResults extends Component {
                 <Inperson></Inperson>
               </div>
               <div className="row">
-                <div className="left-align">
-                  <Link to="/remote" className="waves-effect waves-light btn">Remote Tutors</Link>
+                <div className="center-align">
+                  <Link to="/remote" className=" waves-effect waves-light btn">Remote Tutors</Link>
                 </div>
               </div>
             </div>
