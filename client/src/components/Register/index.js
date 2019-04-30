@@ -37,19 +37,20 @@ class Register extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="login-wrapper">
                 <Nav />
             <div className="section">
                 <div className="container">
                     <div className="row">
-                        <div className="col s4"></div>
+                        <div className="col .hide-on-small-only m3"></div>
 
                         {/* This is the login form */}
-                        <form className="col s4" noValidate onSubmit={this.onSubmit}>
+                        <form className="col s12 m6 white-text" noValidate onSubmit={this.onSubmit}>
                             <h4>Sign Up</h4>
                             <div className="row">
-                                <div className="input-field col s12">
+                                <div className="input-field col s12 ">
                                     <input type="text"
+                                    className="white-text"
                                         id="first_name"
                                         name="first_name"
                                         value={this.state.first_name}
@@ -61,6 +62,7 @@ class Register extends Component {
                             <div className="row">
                                 <div className="input-field col s12">
                                     <input type="text"
+                                    className="white-text"
                                         id="last_name"
                                         name="last_name"
                                         value={this.state.last_name}
@@ -71,6 +73,7 @@ class Register extends Component {
                             <div className="row">
                                 <div className="input-field col s12">
                                     <input type="email"
+                                    className="white-text"
                                         id="email"
                                         name="email"
                                         value={this.state.email}
@@ -82,6 +85,7 @@ class Register extends Component {
                             <div className="row">
                                 <div className="input-field col s12">
                                     <input type="password"
+                                    className="white-text"
                                         id="password"
                                         name="password"
                                         value={this.state.password}
@@ -90,14 +94,14 @@ class Register extends Component {
                                 </div>
                             </div>
                             <button 
-                            className="btn waves-effect waves-light" 
+                            className="btn btn-lg waves-effect waves-light transparent search-button" 
                             type="submit" 
                             name="action">Sign Up
                                 <i className="material-icons right">send</i>
                             </button>
 
                         </form>
-                        <div className="col s4"></div>
+                        <div className="col hide-on-small-only m3"></div>
                     </div>
                 </div>
             </div>

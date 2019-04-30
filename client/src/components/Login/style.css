@@ -1,0 +1,11 @@
+.login-wrapper{
+    width: 100vw;
+    height: 100vh;
+    background-image: url("https://www.newbirth.org/wp-content/uploads/2018/06/Purple-Blue-gradient.jpg");
+    background-color: #071A40;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+}
