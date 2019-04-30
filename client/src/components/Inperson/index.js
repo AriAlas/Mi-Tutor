@@ -18,6 +18,7 @@ class Inperson extends Component {
         M.AutoInit();
     }
     collectionStyle = {
+        marginLeft: "5px",
         minHeight: "150px"
     }
     imgStyle = {
@@ -33,7 +34,7 @@ class Inperson extends Component {
                 {this.state.tutors.map(tutor => (
                     <div className="row" key={tutor.id}>
                         <div className="col s12 m12">
-                            <ul className="collection grey lighten-5 z-depth-1">
+                            <ul className="collection grey lighten-5 z-depth-1 round-corners">
                                 <div className="row">
                                     <li className="collection-item avatar valign-wrapper" style={this.collectionStyle}>
                                         <div className="col s1 m2">
@@ -52,9 +53,10 @@ class Inperson extends Component {
                                                 ))}
                                             </ul>
                                         </div>     
-                                        <div className="col s2 m1">
-                                            <Link to={{pathname: "viewprofile", state: {id:tutor.id}}}   className="waves-light btn modal-trigger right" name={tutor.id} onClick={this.clickHandler} >Contact Me!</Link>
-                                        </div>
+                                        
+                                            {/* <Link to={{pathname: "viewprofile", state: {id:tutor.id}}}   className="waves-light btn modal-trigger right" name={tutor.id} onClick={this.clickHandler} >Contact Me!</Link> */}
+                                        
+                                        <Link to={{pathname: "viewprofile", state: {id:tutor.id}}} name={tutor.id} onClick={this.clickHandler}  class="secondary-content"><i class="smaill material-icons">email</i></Link>
                                     </li>
                                 </div>
                             </ul>

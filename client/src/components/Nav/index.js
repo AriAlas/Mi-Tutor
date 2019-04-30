@@ -23,7 +23,10 @@ class Nav extends React.Component {
     )
   // this is the nav bar when the user is logged in
     const userLink = (
+     
+        
         <li><a href="/" onClick={this.logOut}>LogOut</a></li>
+       
     )
     
 
