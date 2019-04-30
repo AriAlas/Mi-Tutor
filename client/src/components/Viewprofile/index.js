@@ -2,8 +2,6 @@ import React from "react";
 import Nav from "../Nav"
 import API from "../../utils/API";
 
-
-
 class Viewprofile extends React.Component {
 
     state = {
@@ -13,14 +11,13 @@ class Viewprofile extends React.Component {
         bio: "",
         profileImage: "",
         subjects: [],
-
         email: {
             recipient: "",
             name: "",
             sender: "",
             text: ""
-
-        }
+        },
+        emailSent: ""
     }
 
     componentDidMount() {
@@ -39,18 +36,24 @@ class Viewprofile extends React.Component {
     }
     onClickForm = e => {
         e.preventDefault();
-       
-
-        const data = {
+            const data = {
             recipient: this.state.tutoremail,
             sender: this.state.email.sender,
             name: this.state.email.name,
-            text: this.state.email.text
+            text: this.state.email.text,
         }
         console.log(data)
         API.sendgrid(data)
             .then(res => console.log(res))
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
+            .then(document.getElementById("sender").value="",
+            document.getElementById("name").value="",
+            document.getElementById("textarea1").value="")
+            .then(
+                this.setState({
+                    emailSent: "Message sent!"
+                })
+            )
     }
         //    this.setState({email:{recipient:recipient}}, function(){console.log("actual state",this.state.email)})
 
@@ -65,23 +68,18 @@ class Viewprofile extends React.Component {
 
                 <div>
                     <Nav />
-                    
                         <div className="row">
                             <div className="col s12 m4">
-
                                 <span><h3>{this.state.first_name}{" "}{this.state.last_name}</h3></span>
                                 <div className="row">
-                                    <div className="col s12 m7">
+                                    <div className="col s12 m12">
                                         <div className="card">
                                             <div className="card-image">
-
                                                 <img src={this.state.profileImage ? this.state.profileImage : "https://via.placeholder.com/150"} alt="profileImage"/>
-
                                             </div>
                                             <div className="card-content">
                                                 <p>{this.state.bio}</p>
                                                 <h5>Subjects:</h5>
-
                                                 <ul>
                                                     {this.state.subjects.map(function (subject, i) {
                                                         return (
@@ -91,18 +89,10 @@ class Viewprofile extends React.Component {
                                                     )}
                                                 </ul>
                                             </div>
-
-                                            {/* <div class="card-action">
-                                               
-
-                                        </div> */}
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
-
                             <div className="col s12 m8">
                                 <div className="section">
                                     <div className="row">
@@ -114,7 +104,6 @@ class Viewprofile extends React.Component {
                                                         className="validate"
                                                         name="name"
                                                         onChange={e => this.setState({ email: { ...email, name: e.target.value } })}
-
                                                     />
                                                     <label htmlFor="name">Name</label>
                                                 </div>
@@ -134,37 +123,26 @@ class Viewprofile extends React.Component {
                                                     <textarea id="textarea1"
                                                         className="materialize-textarea"
                                                         name="text"
-
                                                         onChange={e => this.setState({ email: { ...email, text: e.target.value } })}
                                                     ></textarea>
                                                     <label htmlFor="textarea1">Message</label>
                                                 </div>
                                             </div>
-                                            <button className="btn waves-effect waves-light"
+                                            <div className="emailSent">
+                                                <a className=" blue-text btn-flat btn-large disabled">{ this.state.emailSent }</a>
+                                            </div>
+                                            <button className="btn waves-light"
                                                 type="submit"
                                                 name={this.state.tutoremail}
                                                 onClick={this.onClickForm}>Send
-        
                                             <i className="material-icons right">send</i>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
-
-
-
-
-
-
-
-
-
                             </div>
-
                         </div>
-                    </div>
-
-               
+                    </div>               
             )
         }
     }
