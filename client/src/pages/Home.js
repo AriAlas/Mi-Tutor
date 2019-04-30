@@ -60,14 +60,14 @@ class Home extends Component {
       // }
     
       loadTutors = () => {
-        API.getInperson().then(res => res.data.map(tutors => console.log(tutors.address)))
+        API.getInperson().then(res => res.data.map(tutors => this.state.tutors.push(tutors.address)))
             .catch(err => console.log(err))
             
       }
       
       componentDidMount = () => {
 
-        // this.loadTutors();
+        this.loadTutors();
         console.log(this.state, "on home page load")
         M.AutoInit();
       }
@@ -85,7 +85,7 @@ class Home extends Component {
                     </div>
                   </div>
               </div>
-                {this.state.showMap ? <SearchResults lat={this.state.lat} lng={this.state.lng} tutorlat={this.state.tutorlat} tutorlng={this.state.tutorlng} /> : 
+                {this.state.showMap ? <SearchResults tutors={this.state.tutors} lat={this.state.lat} lng={this.state.lng} tutorlat={this.state.tutorlat} tutorlng={this.state.tutorlng} /> : 
                 <div></div>
                 }
           </div>

@@ -3,6 +3,7 @@ import React, {Component} from "react"
 import { Link } from "react-router-dom"
 import API from "../../utils/API";
 import M from "materialize-css";
+import { Link } from "react-router-dom"
 
 class Inperson extends Component {
     state = {
@@ -23,6 +24,7 @@ class Inperson extends Component {
         height: "120px",
         width: "120px"
     }
+    
     render() {
         const tutorId = this.state.tutorId
 
@@ -61,6 +63,7 @@ class Inperson extends Component {
                 ))}
             </div>    
         )
+
     }
 };
 export default Inperson;

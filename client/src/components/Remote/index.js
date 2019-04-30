@@ -22,7 +22,9 @@ class Remote extends React.Component {
             .catch(err => console.log(err))
     }
     clickHandler = e => {
+       
         const name = e.target.name;
+        
         this.setState({tutorId:name}, function(){console.log(this.state.tutorId)})
     }
 
@@ -38,11 +40,12 @@ class Remote extends React.Component {
     }
 
     render() {
-        const tutorId = this.state.tutorId
+   
 
         return (
         <div>
             <Nav />
+
             <div className="container">
             {this.state.tutors.map(tutor => (
                 <div className="row" key={tutor.id}>
@@ -76,6 +79,7 @@ class Remote extends React.Component {
                     </div>
             ))}
             </div>
+
         </div>
         )
     }
