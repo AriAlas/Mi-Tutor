@@ -65,14 +65,6 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: true,
 
         },
-        lat: {
-            type: DataTypes.DECIMAL(8,6),
-            allowNull: true
-        },
-        lng: {
-            type: DataTypes.DECIMAL(8,6),
-            allowNull: true
-        },
         profileImage: {
             type: DataTypes.STRING,
             allowNull: true,

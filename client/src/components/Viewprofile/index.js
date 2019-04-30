@@ -75,7 +75,7 @@ class Viewprofile extends React.Component {
                                         <div className="card">
                                             <div className="card-image">
 
-                                                <img src={this.state.profileImage ? this.state.profileImage : "https://via.placeholder.com/150"} />
+                                                <img src={this.state.profileImage ? this.state.profileImage : "https://via.placeholder.com/150"} alt="profileImage"/>
 
                                             </div>
                                             <div className="card-content">

@@ -22,7 +22,9 @@ class Remote extends React.Component {
             .catch(err => console.log(err))
     }
     clickHandler = e => {
+       
         const name = e.target.name;
+        
         this.setState({tutorId:name}, function(){console.log(this.state.tutorId)})
     }
 
@@ -35,7 +37,7 @@ class Remote extends React.Component {
     }
 
     render() {
-        const tutorId = this.state.tutorId
+   
 
         return (
         <div>
@@ -50,7 +52,7 @@ class Remote extends React.Component {
                                         <p>{tutor.bio}<br></br>
                                         {tutor.subjects}
                                         </p>
-                                        <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
+                                        <Link to={{pathname: "viewprofile", state: {id:tutor.id}}} name={tutor.id} onClick={this.clickHandler} className="secondary-content"><i className="material-icons">contact_mail</i></Link>
                                 </div>
                         </li>
                     </ul>

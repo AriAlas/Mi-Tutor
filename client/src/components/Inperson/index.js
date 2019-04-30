@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import API from "../../utils/API";
 import M from "materialize-css";
+import { Link } from "react-router-dom"
 
 class Inperson extends Component {
     state = {
@@ -21,6 +22,7 @@ class Inperson extends Component {
         height: "100px",
         width: "100px"
     }
+    
     render() {
         return (
         <div>
@@ -34,7 +36,7 @@ class Inperson extends Component {
                             <p>{tutor.bio}<br></br>
                             {tutor.subjects}
                             </p>
-                            <a href="#!" className="secondary-content"><i className="material-icons">grade</i></a>
+                            <Link to={{pathname: "viewprofile", state: {id:tutor.id}}} name={tutor.id}className="secondary-content"><i className="material-icons">contact_mail</i></Link>
                     </div>
             </li>
         </ul>

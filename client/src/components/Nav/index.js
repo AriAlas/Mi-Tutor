@@ -23,7 +23,7 @@ class Nav extends React.Component {
     )
   // this is the nav bar when the user is logged in
     const userLink = (
-        <li><a href="" onClick={this.logOut}>LogOut</a></li>
+        <li><a href="/" onClick={this.logOut}>LogOut</a></li>
     )
     
 
@@ -31,7 +31,7 @@ class Nav extends React.Component {
     <div>
     <nav className="teal lighten-2 main-nav">
       <div className="nav-wrapper">
-        <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+        <a href="/" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
         <Link to="/" className="brand-logo">MiTutor</Link>
         <ul className="right hide-on-med-and-down">
           <li><Link to="/">Home</Link></li>

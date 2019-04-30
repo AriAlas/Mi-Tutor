@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import jwt_decode from "jwt-decode";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import API from "../../utils/API"
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import M from "materialize-css";
@@ -251,7 +251,7 @@ class Profile extends Component {
                             <div className="col s4 ">
                                 <div className="card hoverable">
                                     <div className="card-image">
-                                        <img src={this.state.profileImage ? this.state.profileImage : "https://via.placeholder.com/150"} />
+                                        <img src={this.state.profileImage ? this.state.profileImage : "https://via.placeholder.com/150"} alt="profileImage"/>
                                         <span className="card-title white-text">{this.state.first_name}{" "}{this.state.last_name}</span>
 
 
