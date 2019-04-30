@@ -110,7 +110,7 @@ class SearchResults extends Component {
             </div>
           </div>
         </div>
-        <div className=" teal lighten-3">
+        <div className="indigo lighten-2">
           <div className="row">
             <div className="col s0 m3"></div>
             <div className="col s12 m6">
