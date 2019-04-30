@@ -43,7 +43,7 @@ class Remote extends React.Component {
    
 
         return (
-        <div className="teal lighten-3">
+        <div className="indigo lighten-2 remote-wrapper">
             <Nav />
 
             <div className="container">
