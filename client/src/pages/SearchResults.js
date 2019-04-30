@@ -14,6 +14,7 @@ constructor(props){
 
   }
 
+
 }
 
   //  display inperson tutors on map.
@@ -46,6 +47,7 @@ constructor(props){
 
         for (var i = 0; i < addresses.length; i++){
          markers.push([addresses[i],lat[i],long[i]])
+
          
         }
         console.log(markers)
