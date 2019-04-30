@@ -1,0 +1,20 @@
+.viewprofile-wrapper{
+     /* Sizing */
+     width: 100vw;
+     height: 100vh;
+ 
+               /* Background styles */
+              
+     background-color: #071A40;
+     background-size: cover;
+     background-position: center center;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     position: relative;
+}
+
+.form {
+    border: 2px lightskyblue solid;
+    padding: 30px !important;
+    border-radius: 10px;
+}

@@ -5,6 +5,7 @@ import API from "../../utils/API"
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import M from "materialize-css";
 import Nav from "../Nav"
+import "./style.css"
 
 class Profile extends Component {
     constructor() {
@@ -221,7 +222,7 @@ class Profile extends Component {
     render() {
         return (
 
-            <div>
+            <div class ="profile-wrapper">
                 <Nav />
                 {/* <nav> */}
                     {/* <div className="nav-wrapper teal lighten-2"> */}
@@ -249,7 +250,7 @@ class Profile extends Component {
                             <div className="col s4"></div>
 
                             <div className="col s4 ">
-                                <div className="card hoverable">
+                                <div className="card hoverable round-border">
                                     <div className="card-image">
                                         <img src={this.state.profileImage ? this.state.profileImage : "https://via.placeholder.com/150"} alt="profileImage"/>
                                         <span className="card-title white-text">{this.state.first_name}{" "}{this.state.last_name}</span>
@@ -286,7 +287,7 @@ class Profile extends Component {
                                 <div className="row">
                                     <div className="file-field input-field">
                                         <div className="btn">
-                                            <span>File</span>
+                                            <span>UPLOAD</span>
 
 
                                             
@@ -294,7 +295,7 @@ class Profile extends Component {
                                         type='file' 
                                         name="profileImage" 
                                         onChange={this.onChangeImage} />
-                                          <button type='submit'>Send</button>
+                                          <button type='submit'>    </button>
 
 
                                         </div>
@@ -322,8 +323,8 @@ class Profile extends Component {
                     </div>
 
                     <div className="row">
-                        <div className="col s1"></div>
-                        <div className="col s10">
+                        <div className="col hide-on-small-only m1"></div>
+                        <div className="col s12 m10">
                             <div className="card-panel white hoverable">
                                 {/* Modal button */}
                                 <div className="right-align "><a className="btn-floating waves-light light-blue darken-4 modal-trigger" href="#modal1"><i className="material-icons">edit</i></a></div>
@@ -371,13 +372,13 @@ class Profile extends Component {
                                 <p>{this.state.bio}</p>
                             </div>
                         </div>
-                        <div className="col s1"></div>
+                        <div className="col hide-on-small-only m1"></div>
                     </div>
 
                     <div className="row">
-                        <div className="col s2"></div>
-                        <div className="col s4">
-                            <div className="card-panel white hoverable">
+                        <div className="col hide-on-small-only m1"></div>
+                        <div className="col s12 m5">
+                            <div className="card-panel white hoverable cardheigh">
                                 {/* Modal button */}
                                 <div className="right-align"><a className="btn-floating waves-light light-blue darken-4 modal-trigger" href="#modal2"><i className="material-icons">edit</i></a></div>
 
@@ -442,8 +443,8 @@ class Profile extends Component {
                                 </ul>
                             </div>
                         </div>
-                        <div className="col s4">
-                            <div className="card-panel white hoverable">
+                        <div className="col s12 m5">
+                            <div className="card-panel white hoverable cardheigh">
                                 {/* Modal button */}
                                 <div className="right-align"><a className="btn-floating waves-light light-blue darken-4 modal-trigger" href="#modal3"><i className="material-icons">edit</i></a></div>
 
@@ -556,7 +557,7 @@ class Profile extends Component {
                                 <p>Address: {this.state.address}</p>
                             </div>
                         </div>
-                        <div className="col s2"></div>
+                        <div className="col m1 hide-on-small-only"></div>
                     </div>
 
 
