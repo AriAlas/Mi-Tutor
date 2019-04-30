@@ -11,14 +11,13 @@ class Viewprofile extends React.Component {
         bio: "",
         profileImage: "",
         subjects: [],
-
         email: {
             recipient: "",
             name: "",
             sender: "",
             text: ""
-
-        }
+        },
+        emailSent: ""
     }
 
     componentDidMount() {
@@ -41,7 +40,7 @@ class Viewprofile extends React.Component {
             recipient: this.state.tutoremail,
             sender: this.state.email.sender,
             name: this.state.email.name,
-            text: this.state.email.text
+            text: this.state.email.text,
         }
         console.log(data)
         API.sendgrid(data)
@@ -50,6 +49,11 @@ class Viewprofile extends React.Component {
             .then(document.getElementById("sender").value="",
             document.getElementById("name").value="",
             document.getElementById("textarea1").value="")
+            .then(
+                this.setState({
+                    emailSent: "Message sent!"
+                })
+            )
     }
         //    this.setState({email:{recipient:recipient}}, function(){console.log("actual state",this.state.email)})
 
@@ -123,6 +127,9 @@ class Viewprofile extends React.Component {
                                                     ></textarea>
                                                     <label htmlFor="textarea1">Message</label>
                                                 </div>
+                                            </div>
+                                            <div className="emailSent">
+                                                <a className=" blue-text btn-flat btn-large disabled">{ this.state.emailSent }</a>
                                             </div>
                                             <button className="btn waves-light"
                                                 type="submit"
