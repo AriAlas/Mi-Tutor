@@ -24,11 +24,16 @@ class SearchResults extends Component {
     var lat = []
     var long = []
     var markers = []
+    var names = []
     var bounds = new window.google.maps.LatLngBounds();
+    var infowindow = new window.google.maps.InfoWindow();
 
 
     API.getInperson()
-      .then(res => res.data.map(tutors => addresses.push(tutors.address)))
+      .then(res => res.data.map(tutors => {
+        addresses.push(tutors.address)
+        names.push(tutors.first_name +" "+ tutors.last_name)
+      }))
       .then(() => {
         this.setState({ address: addresses },
           function () {
@@ -45,6 +50,7 @@ class SearchResults extends Component {
         console.log(addresses)
         console.log(lat)
         console.log(long)
+        console.log(names)
 
         for (var i = 0; i < addresses.length; i++) {
           markers.push([addresses[i], lat[i], long[i]])
@@ -62,6 +68,18 @@ class SearchResults extends Component {
             map: map,
             title: markers[i][0]
           })
+         
+          window.google.maps.event.addListener(marker, "click", (function(marker, i){
+            console.log("clicked")
+           
+            return function(){
+              infowindow.setContent(names[i]);
+              infowindow.open(map, marker);
+
+            }
+            
+          })(marker, i));
+
         }
 
       }, 1000))
@@ -114,8 +132,8 @@ class SearchResults extends Component {
           <div className="row">
             <div className="col s0 m3"></div>
             <div className="col s12 m6">
-              <div>
-                <h6>Tutors in your area:</h6>
+              <div className="center-align">
+                <h3 className="white-text">In-Person Tutors</h3>
                 <Inperson></Inperson>
               </div>
               <div className="row">

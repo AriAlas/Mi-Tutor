@@ -42,11 +42,11 @@ class Inperson extends Component {
                                                 <img src={tutor.profileImage ? tutor.profileImage : `https://via.placeholder.com/150`} alt="" className="circle responsive-img" style={this.imgStyle} ></img>
                                             </div>
                                         </div>    
-                                        <div className="col s5 m6">
+                                        <div className="col s7 pull-s1 m6">
                                             <span className="title"><h5>{tutor.first_name}{" "}{tutor.last_name}</h5></span>
                                             <p>{tutor.bio}</p>
                                         </div>
-                                        <div className="col s2 m3">
+                                        <div className="col hide-on-small-only m3">
                                             <ul>
                                                 {tutor.subjects.split(",").map(subject => (
                                                 <li key={subject}>{subject}</li>
