@@ -66,9 +66,42 @@
         margin-bottom: 5px !important;
      }
 
+     .home-card{
+         width: 100%;
+     }
+     .or-margin{
+         margin: 80px 0;
      
+     }
 
+     .search-margin-left{
+         margin-left: 50px !important;
+         margin-bottom: 0px !important;
+     }
+    .about-wrapper{
+        width: 100vw;
+        height: 100vh;
+        background-image: url("https://media.discordapp.net/attachments/546608710420529172/573472627109265408/155661762813555258.jpg");
+        background-color: #071A40;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        position: relative;
+    }
+    .padding{
+        padding: 20px;
+        padding-bottom: 50px; 
+    }
           
-
+     @media only screen and (max-width: 600px) {
+        .or-margin {
+          margin-top: 30px;
+          margin-bottom: 30px;
+        }
+        .search-margin-left{
+            margin-left: 25px !important;
+        }
+      }
    
       
