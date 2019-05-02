@@ -36,15 +36,11 @@ class Map extends Component {
   render() {
     return (
       <div className="section">
-      
-       
         <div className=" center-align">
         <span className="white-text"><h3>Tutors in your area:</h3></span>
           <div style={{ width: 1700, height: 500 }} id={this.props.id} />
         </div>
-
         </div>
-     
     );
   }
 }

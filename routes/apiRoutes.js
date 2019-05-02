@@ -30,8 +30,6 @@ console.log(req.body);
 });
 });
 
-
-
 // configure the keys for accessing AWS
 AWS.config.update({
  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -55,10 +53,6 @@ const uploadFile = (buffer, name, type) => {
  };
  return s3.upload(params).promise();
 };
-
-
-
-
 
 //get one tutor by email to display in profile when they sign in
 users.get("/tutor/:email", (req, res)=>{
@@ -107,7 +101,6 @@ users.get("/inpersontutor", (req, res)=> {
 })
 
 users.post("/imageupload/", (req, res)=>{
-    
     const form = new multiparty.Form();
    form.parse(req, async (error, fields, files) => {
      if (error) throw new Error(error);
@@ -127,6 +120,5 @@ users.post("/imageupload/", (req, res)=>{
    });
  
 })
-
 
 module.exports = users;

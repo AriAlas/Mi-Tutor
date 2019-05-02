@@ -23,32 +23,22 @@ class Nav extends React.Component {
     )
   // this is the nav bar when the user is logged in
     const userLink = (
-     
-        
         <li><a href="/" onClick={this.logOut}>LogOut</a></li>
-       
     )
-    
-
   return (
     <div>
     <nav className="transparent lighten-2 main-nav">
       <div className="nav-wrapper">
         <a href="/" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
         <Link to="/" className="brand-logo"><img className="logo"src="https://cdn.discordapp.com/attachments/546608710420529172/572759451254128670/logoyletra.PNG"></img></Link>
-        
         <ul className="right hide-on-med-and-down">
           <li><Link to="/">Home</Link></li>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/tutors">Tutors</Link></li>
           {localStorage.userToken ? userLink : loginLink}
           </ul>
-        </div>
-
-       
-
-      
-      </nav>
+      </div>
+    </nav>
       <ul className="sidenav" id="mobile-demo">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about">About</Link></li>

@@ -11,14 +11,10 @@ class SearchResults extends Component {
     this.state = {
       address: [],
       latLong: {}
-
     }
-
-
   }
 
   //  display inperson tutors on map.
-
   loadTutors = (map) => {
     var addresses = []
     var lat = []
@@ -54,11 +50,8 @@ class SearchResults extends Component {
 
         for (var i = 0; i < addresses.length; i++) {
           markers.push([addresses[i], lat[i], long[i]])
-
-
         }
         console.log(markers)
-
 
         for (var i = 0; i < markers.length; i++) {
           var position = new window.google.maps.LatLng(markers[i][1], markers[i][2]);
@@ -75,48 +68,29 @@ class SearchResults extends Component {
             return function(){
               infowindow.setContent(names[i]);
               infowindow.open(map, marker);
-
             }
-            
           })(marker, i));
-
         }
-
       }, 1000))
-
-
-
-
-
-
-
-
   }
 
   loadLatLong = () => {
     console.log(this.state.address, "state address inside load");
   }
 
-
-
-
   componentDidMount() {
     M.AutoInit()
     this.loadTutors();
     this.loadLatLong();
-
   }
 
-
   render() {
-
 
     return (
       <div>
         <div className=" bg-2 valign-wrapper">
           <div className="row">
             <div className="col s12 ">
-
               <Map
                 id="myMap"
                 options={{

@@ -7,6 +7,7 @@ class SearchBar extends Component {
       search:""
     }
   }
+  
   render() {
     
     return (
@@ -19,7 +20,6 @@ class SearchBar extends Component {
                value={this.props.value} 
                 onChange={e=> this.props.handleInput(e)}
                  />
-                
             </div>
           </div>
         </form>

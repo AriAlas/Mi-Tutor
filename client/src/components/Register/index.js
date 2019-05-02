@@ -43,7 +43,6 @@ class Register extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col .hide-on-small-only m3"></div>
-
                         {/* This is the login form */}
                         <form className="col s12 m6 white-text" noValidate onSubmit={this.onSubmit}>
                             <h4>Sign Up</h4>
@@ -55,7 +54,6 @@ class Register extends Component {
                                         name="first_name"
                                         value={this.state.first_name}
                                         onChange={this.onChange} />
-
                                     <label htmlFor="first_name">First Name</label>
                                 </div>
                             </div>
@@ -78,7 +76,6 @@ class Register extends Component {
                                         name="email"
                                         value={this.state.email}
                                         onChange={this.onChange} />
-
                                     <label htmlFor="email">Email</label>
                                 </div>
                             </div>
@@ -99,7 +96,6 @@ class Register extends Component {
                             name="action">Sign Up
                                 <i className="material-icons right">send</i>
                             </button>
-
                         </form>
                         <div className="col hide-on-small-only m3"></div>
                     </div>

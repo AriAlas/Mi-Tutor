@@ -35,6 +35,7 @@ class Viewprofile extends React.Component {
             }, function () { console.log(this.state) }))
 
     }
+    
     onClickForm = e => {
         e.preventDefault();
             const data = {
@@ -56,11 +57,6 @@ class Viewprofile extends React.Component {
                 })
             )
     }
-        //    this.setState({email:{recipient:recipient}}, function(){console.log("actual state",this.state.email)})
-
-        //   fetch(`http://localhost:3001/api/send?recipient=${this.state.email.recipient}&name=${this.state.email.name}&sender=${this.state.email.sender}&text=${this.state.email.text}`)
-        //  .catch(err => console.log(err))
-        //    }
 
         render() {
             const { email } = this.state;
@@ -72,29 +68,9 @@ class Viewprofile extends React.Component {
                         <div className="row">
                             <div className="col s12">
                                <h3 className="white-text center-align">Contact {this.state.first_name}{" "}{this.state.last_name}</h3>
-                                <div className="row">
-                                    {/* <div className="col s12 m12">
-                                        <div className="card">
-                                            <div className="card-image">
-                                                <img src={this.state.profileImage ? this.state.profileImage : "https://via.placeholder.com/150"} alt="profileImage"/>
-                                            </div>
-                                            <div className="card-content">
-                                                <p>{this.state.bio}</p>
-                                                <h5>Subjects:</h5>
-                                                <ul>
-                                                    {this.state.subjects.map(function (subject, i) {
-                                                        return (
-                                                            <li key={i} >{subject}</li>
-                                                        )
-                                                    }
-                                                    )}
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div> */}
-                                </div>
+                                <div className="row"></div>
                             </div>
-                            </div>
+                        </div>
                             <div className="row">
                             <div className="col .hide-on-small-only m3"></div>
                             <div className="col s12 m6 form">
@@ -104,7 +80,6 @@ class Viewprofile extends React.Component {
                                             <div className="row">
                                                 <div className="input-field col s12">
                                                     <input type="text"
-
                                                         id="name"
                                                         className="validate white-text"
                                                         name="name"
@@ -148,11 +123,9 @@ class Viewprofile extends React.Component {
                             </div>
                             <div className="col .hide-on-small-only m3"></div>
                         </div>
-                      
                     </div>               
             )
         }
     }
-
 
     export default Viewprofile;

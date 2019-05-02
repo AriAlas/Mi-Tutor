@@ -26,7 +26,6 @@ class Profile extends Component {
             lat: "",
             lng: "",
             lastclickedoption: []
-
         }
     }
     componentDidMount() {
@@ -38,16 +37,8 @@ class Profile extends Component {
             last_name: decoded.last_name,
             email: decoded.email
         })
-        // var elems = document.querySelectorAll('.modal');
-        // M.Modal.init(elems, M.options);
-        // var elems = document.querySelectorAll('.dropdown-trigger');
-        // M.Dropdown.init(elems, M.options);
-        // var elems = document.querySelectorAll('select');
-        // M.FormSelect.init(elems, M.options);
-        // var elems = document.querySelectorAll('.sidenav');
-        // M.Sidenav.init(elems, M.options);  
+
         M.AutoInit();
-        
         
         API.getOneTutor(email)
             .then(tutor => 
@@ -68,54 +59,50 @@ class Profile extends Component {
             )
             .catch(err => console.log(err));
     }
+
     logOut=e=>{
         e.preventDefault();
         localStorage.removeItem("userToken");
         window.location.href="/";
-      }
+    }
+
     onChangeImage = e => {
         this.setState({file: e.target.files}, function(){
             console.log(this.state.file[0])
         })
     }
+
     onClickImage = e => {
         e.preventDefault();
       var id = this.state.id;
         const formData = new FormData();
         formData.append('file', this.state.file[0]);
-        
-
-       API.postImage(formData).then(response => {
+        API.postImage(formData).then(response => {
            API.updateTutor(id, {profileImage: response.data.Location}).then(res=>console.log(res))
         this.setState({profileImage:response.data.Location})
         }).catch(error => {
             console.log(error)
           // handle your error
         });
-
-
     }
-    onChangeBio = (e) => {
 
+    onChangeBio = (e) => {
         var value = e.target.value;
         this.setState({ bio: value })
     }
+
     onClickBio = (e) => {
         e.preventDefault();
-
         var id = this.state.id;
-
         var data = {
             bio: this.state.bio
         }
-
         API.updateTutor(id, data)
             .then(res => console.log(res))
             .catch(err => console.log(err));
     }
 
     onChangeSubjects = (e) => {
-
         var options = e.target.options;
         var value = [];
         for (var i = 0; i < options.length; i++){
@@ -124,36 +111,18 @@ class Profile extends Component {
             }
         }
         this.setState({subjects:value});
-        // var value = e.target.value;
-        // var subjects = this.state.subjects;
-
-        // // console.log(subjects);
-        // var index = subjects.indexOf(value);
-        // if (index === -1) { subjects.push(value) }
-        // else{subjects.pop(value)}
-       
-        // console.log("index", index);
-
-        // this.setState({ subjects: subjects, lastclickedoption: value })
-
     }
     onClickSubjects = (e) => {
-        // console.log(e);
         e.preventDefault();
-
         var id = this.state.id;
-
         var mysubjects = this.state.subjects
         console.log("current subjects", mysubjects);
-
         var data = {
             subjects: mysubjects.join(",")
         }
-
         API.updateTutor(id, data)
             .then(res => console.log(res))
             .catch(err => console.log(err));
-
     }
 
 
@@ -165,11 +134,10 @@ class Profile extends Component {
             console.log("onchangepersonal",this.state)
         });
     }
+
     onClickPersonal = e => {
         e.preventDefault();
-
         var id = this.state.id;
-
         var data = {
             first_name: this.state.first_name,
             last_name: this.state.last_name,
@@ -181,7 +149,6 @@ class Profile extends Component {
             lng: this.state.lng
         }
         console.log(data, "going to db")
-        // this.searchGeo();
         
         API.updateTutor(id, data)
             .then(res => console.log(res))
@@ -195,77 +162,27 @@ class Profile extends Component {
                 .catch(err => console.log(err))
             }));
             console.log(this.state.address, "in updatetutor")
-            // this.searchGeo()
     }
-    
-
-    // searchGeo = ()=>{
-    //         console.log("address test")
-    //         API.getFromGeo(this.state.address).then((res)=>{
-    //             console.log(res.data.results[0].geometry.location.lat)
-    //             console.log(res.data.results[0].geometry.location.lng)
-    //             this.setState({
-    //             lat: res.data.results[0].geometry.location.lat,
-    //             lng: res.data.results[0].geometry.location.lng,
-    //             })
-    //             console.log(this.state) 
-    //         })
-            // }).then(()=>{
-        //         console.log("within promise")
-        //         API.updateTutor(id, data)
-        //     .then(res => console.log(res))
-        //     .catch(err => console.log(err));
-        //     });
-        
-
-       
+           
     render() {
         return (
 
             <div class ="profile-wrapper">
                 <Nav />
-                {/* <nav> */}
-                    {/* <div className="nav-wrapper teal lighten-2"> */}
-                        {/* <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a> */}
-                        {/* <Link to="/" className="brand-logo">MiTutor</Link> */}
-                        {/* <ul className="right hide-on-med-and-down"> */}
-                            {/* <li><Link to="/about">About</Link></li> */}
-                            {/* If Authenticated This <a> tag is Profile */}
-                            {/* If NOT authenticated this tag is  LOGIN*/}
-                            {/* <li><a onClick={this.logOut} to="/">LogOut</a></li>
-                        </ul>
-                    </div>
-                </nav> */}
-                {/* <ul className="sidenav" id="mobile-demo">
-                    <li><Link to="/about">About</Link></li> */}
-                    {/* If Authenticated This <a> tag is Profile */}
-                    {/* If NOT authenticated this tag is  LOGIN*/}
-                    {/* <li><a onClick={this.logOut}to="/tutors">LogOut</a></li>
-                </ul> */}
-
-                {/* This is the profile picture */}
                 <section className="section">
                     <div className="container ">
                         <div className="row">
-                            <div className="col s4"></div>
-
                             <div className="col s4 ">
                                 <div className="card hoverable round-border">
                                     <div className="card-image">
                                         <img src={this.state.profileImage ? this.state.profileImage : "https://via.placeholder.com/150"} alt="profileImage"/>
                                         <span className="card-title white-text">{this.state.first_name}{" "}{this.state.last_name}</span>
-
-
-
                                         <form action="">
                                             <div className="file-field">
                                                 {/* Modal button */}
                                                 <a className="btn-floating halfway-fab waves-light light-blue darken-4 modal-trigger" href="#modal0"><i className="material-icons">edit</i></a>
-
                                             </div>
                                         </form>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -273,31 +190,22 @@ class Profile extends Component {
                         </div>
                     </div>
                 </section>
-
                 {/* This is the Image Section */}
                 <section className="section">
-
-
                     {/* Modal Structure */}
                     <div id="modal0" className="modal">
                         <div className="modal-content">
                             <h4>Profile Picture</h4>
-
                             <form >
                                 <div className="row">
                                     <div className="file-field input-field">
                                         <div className="btn">
                                             <span>UPLOAD</span>
-
-
-                                            
                                         <input label='upload file' 
                                         type='file' 
                                         name="profileImage" 
                                         onChange={this.onChangeImage} />
                                           <button type='submit'>    </button>
-
-
                                         </div>
                                         <div className="file-path-wrapper">
                                             <input className="file-path validate" type="text"></input>
@@ -305,9 +213,6 @@ class Profile extends Component {
                                     </div>
                                 </div>
                             </form>
-                            
-
-
                         </div>
                         <div className="modal-footer">
                         <button className="btn waves-effect waves-light light-blue darken-4 modal-close"
@@ -315,29 +220,24 @@ class Profile extends Component {
                                 name="action"
                                 value={this.state.id}
                                 onClick={this.onClickImage}>Submit
-                                        <i className="material-icons right">send</i>
+                                <i className="material-icons right">send</i>
                             </button>{" "}
                             <button href="#!" className="modal-close btn waves-effect  light-blue darken-4">Close</button>
                         </div>
-
                     </div>
-
                     <div className="row">
                         <div className="col hide-on-small-only m1"></div>
                         <div className="col s12 m10">
                             <div className="card-panel white hoverable">
                                 {/* Modal button */}
                                 <div className="right-align "><a className="btn-floating waves-light light-blue darken-4 modal-trigger" href="#modal1"><i className="material-icons">edit</i></a></div>
-
                                 {/* Modal Structure */}
                                 <div id="modal1" className="modal">
                                     <div className="modal-content">
                                         <h4>About you</h4>
-
                                         <form action="">
                                             <div className="row">
                                                 <div className="input-field col s12">
-
                                                     <input id="bio"
                                                         type="text"
                                                         className="validate"
@@ -348,9 +248,7 @@ class Profile extends Component {
                                                     <label htmlFor="bio">Tell us a little about yourself!</label>
                                                 </div>
                                             </div>
-                                            
                                         </form>
-
                                     </div>
                                     <div className="modal-footer">
                                     <button className="btn waves-effect waves-light light-blue darken-4 modal-close"
@@ -362,11 +260,8 @@ class Profile extends Component {
                                             </button> {" "}
                                         <button href="#!" className="modal-close btn waves-effect  light-blue darken-4">Close</button>
                                     </div>
-
                                 </div>
-
                                 <span className="black-text"><strong>About me</strong>
-
                                 </span>
                                 <div className="divider"></div>
                                 <p>{this.state.bio}</p>
@@ -374,27 +269,22 @@ class Profile extends Component {
                         </div>
                         <div className="col hide-on-small-only m1"></div>
                     </div>
-
                     <div className="row">
                         <div className="col hide-on-small-only m1"></div>
                         <div className="col s12 m5">
                             <div className="card-panel white hoverable cardheigh">
                                 {/* Modal button */}
                                 <div className="right-align"><a className="btn-floating waves-light light-blue darken-4 modal-trigger" href="#modal2"><i className="material-icons">edit</i></a></div>
-
                                 {/* Modal Structure */}
                                 <div id="modal2" className="modal modal-fixed-footer">
                                     <div className="modal-content">
                                         <h4>Subjects</h4>
-
                                         <form action="">
-
                                             <div className="row">
                                                 <div className="input-field col s12">
                                                     <select multiple
                                                         id="subjects"
                                                         onChange={this.onChangeSubjects}
-                                                    
                                                         value={this.state.subjects}
                                                     >
                                                         <option disabled={true} value="">Choose an option</option>
@@ -411,11 +301,8 @@ class Profile extends Component {
                                                     <label>What subjects do you feel comfortable teaching?</label>
                                                 </div>
                                             </div>
-
                                         </form>
-
                                     </div>
-
                                     <div className="modal-footer">
                                         <button className="btn waves-effect waves-light light-blue darken-4 modal-close"
                                             type="submit"
@@ -426,11 +313,8 @@ class Profile extends Component {
                                         {" "}
                                         <button href="#!" className="modal-close btn waves-effect  light-blue darken-4">Close</button>
                                     </div>
-
                                 </div>
-
                                 <span className="black-text"><strong>Area of knowledge</strong>
-
                                 </span>
                                 <div className="divider"></div>
                                 <ul>
@@ -447,12 +331,10 @@ class Profile extends Component {
                             <div className="card-panel white hoverable cardheigh">
                                 {/* Modal button */}
                                 <div className="right-align"><a className="btn-floating waves-light light-blue darken-4 modal-trigger" href="#modal3"><i className="material-icons">edit</i></a></div>
-
                                 {/* Modal Structure */}
                                 <div id="modal3" className="modal modal-fixed-footer">
                                     <div className="modal-content">
                                         <h4>Personal Information</h4>
-
                                         <form action="">
                                             <div className="row">
                                                 <div className="input-field col s4">
@@ -462,7 +344,6 @@ class Profile extends Component {
                                                         name="first_name"
                                                         onChange={this.onChangePersonal}
                                                         value={this.state.first_name}
-
                                                     ></input>
                                                     <label htmlFor="first_name">First Name</label>
                                                 </div>
@@ -515,21 +396,11 @@ class Profile extends Component {
                                                             this.setState({ address: description })
                                                         )}
                                                     />
-                                                    {/* <input id="address" 
-                                                    type="text" 
-                                                    className="validate" 
-                                                    name="address"
-                                                    ></input> */}
                                                     <label htmlFor="address"></label>
                                                 </div>
                                             </div>
-
-
-                                           
                                         </form>
-
                                     </div>
-                                    
                                     <div className="modal-footer">
                                     <button className="btn waves-effect waves-light light-blue darken-4 modal-close"
                                                 type="submit"
@@ -539,33 +410,20 @@ class Profile extends Component {
                                             </button>{" "}
                                         <button href="#!" className="modal-close btn waves-effect  light-blue darken-4">Close</button>
                                     </div>
-
                                 </div>
-
-
-
-
-
-
-
                                 <span className="black-text"><strong>Personal Information</strong></span>
                                 <div className="divider"></div>
-                                <p>Name: {this.state.first_name}{" "}{this.state.last_name}</p>
-                                <p>Date of birth: {this.state.Date_of_birth }</p>
-                                <p>Remote sessions: {this.state.remote ? "Yes" : "No"}</p>
-                                <p>Presental sessions: {this.state.inperson ? "Yes" : "No"}</p>
-                                <p>Address: {this.state.address}</p>
+                                    <p>Name: {this.state.first_name}{" "}{this.state.last_name}</p>
+                                    <p>Date of birth: {this.state.Date_of_birth }</p>
+                                    <p>Remote sessions: {this.state.remote ? "Yes" : "No"}</p>
+                                    <p>Presental sessions: {this.state.inperson ? "Yes" : "No"}</p>
+                                    <p>Address: {this.state.address}</p>
                             </div>
                         </div>
                         <div className="col m1 hide-on-small-only"></div>
                     </div>
-
-
-
-
                 </section>
             </div>
-
         )
     }
 }
