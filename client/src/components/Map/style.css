@@ -1,11 +1,11 @@
 #myMap{
     margin: 0 auto;
-    /* width: 100% !important; */
+    width: 100% !important;
 }
 
 .bg-2{
     width: 100vw;
-    height: 75vh;
+    max-height: 100vh;
     background-color: #F29F05;
 }
 

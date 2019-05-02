@@ -13,7 +13,7 @@
     .home-wrapper  {
     /* Sizing */
     width: 100vw;
-    height: 100vh;
+    height: 100vh !important;
 
               /* Background styles */
               background-image: url("https://images.pexels.com/photos/1059114/pexels-photo-1059114.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
