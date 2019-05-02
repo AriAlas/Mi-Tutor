@@ -31,6 +31,7 @@
           width: 300px !important;
             margin: 10px;
            
+           
         }
         
         .margin{
@@ -38,4 +39,10 @@
         }
        
   
-        
+                  
+     @media only screen and (max-width: 600px) {
+        .steps{
+            float: none !important;
+            margin: 10px auto;
+        }
+      }

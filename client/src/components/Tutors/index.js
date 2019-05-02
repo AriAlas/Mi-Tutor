@@ -33,14 +33,14 @@ class Tutors extends Component {
                
 
                 <div className="section steps-container   valign-wrapper">
-                    <div className=" center-align margin">
+                    <div className="  margin">
                         <div className="row ">
-                            <div className="col s12">
+                            <div className="col s12 ">
                                 <h1 className="center-align">Steps to become a tutor:</h1>
                             </div>
                         </div>
                         <div className="row center-align">
-                            <div className="steps col s6 m3">
+                            <div className="steps col s6 m3 ">
                                 <h3>Sign Up</h3>
                                 <p>Your profile is essentially your own website to attract new students.
                                     Write about your education, experience, and explain how you teach and why you love it.
