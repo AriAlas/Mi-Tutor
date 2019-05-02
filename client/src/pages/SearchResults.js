@@ -113,9 +113,9 @@ class SearchResults extends Component {
 
     return (
       <div>
-        <div className=" bg-2">
+        <div className=" bg-2 valign-wrapper">
           <div className="row">
-            <div className="col s12">
+            <div className="col s12 ">
 
               <Map
                 id="myMap"

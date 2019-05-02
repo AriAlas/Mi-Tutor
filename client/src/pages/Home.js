@@ -5,6 +5,7 @@ import Nav from "../components/Nav";
 import API from "../utils/API"
 import SearchResults from "./SearchResults";
 import M from "materialize-css";
+import { Link } from "react-router-dom"
 
 class Home extends Component {
     constructor(){
@@ -93,10 +94,26 @@ class Home extends Component {
           <br/>
               <div className="container center-align ">
                   <div className="card vcenter indigo darken-4 opacity round-corners ">
-                    <div className="card-content ">
+                    <div className="card-content home-card">
+                      <div className="row ">
+                      <div className="col s12 m5  ">
                         <span className="card-title white-text">Find tutors near you!</span>               
                         <SearchBar handleInput={this.handleInput} value={this.state.search} name="search"></SearchBar>
                         <SearchButton searchGeo={this.searchGeo} value={this.state.lat} ></SearchButton>
+                        </div>
+                          
+                        <div className="col s12 m2 "><span className="center-align card-title white-text or-margin ">- or -</span></div>
+                     
+                      
+                        <div className="col s12 m5 ">
+                        <span className="card-title white-text ">Find remote tutors!</span> 
+                        <br className="hide-on-small-only"/>
+                        <br className="hide-on-small-only"/>
+                        <div className="center-align">
+                  <Link to="/remote" className=" waves-effect waves-light btn btn-large transparent search-button">Remote Tutors</Link>
+                </div>
+                        </div>
+                        </div>
                     </div>
                   </div>
               </div>
