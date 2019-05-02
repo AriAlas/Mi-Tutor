@@ -16,7 +16,7 @@ class Profile extends Component {
             last_name: "",
             email: "",
             bio: "",
-            Date_of_birth: "",
+            date_of_birth: "",
             remote: "",
             inperson: "",
             subjects: [],
@@ -45,7 +45,7 @@ class Profile extends Component {
                 this.setState({
                 id: tutor.data.id,
                 bio: tutor.data.bio,
-                Date_of_birth: tutor.data.Date_of_birth,
+                date_of_birth: tutor.data.date_of_birth,
                 remote: tutor.data.remote,
                 inperson: tutor.data.inperson,
                 subjects: tutor.data.subjects ? tutor.data.subjects.split(",") : [],
@@ -141,7 +141,7 @@ class Profile extends Component {
         var data = {
             first_name: this.state.first_name,
             last_name: this.state.last_name,
-            Date_of_birth: this.state.Date_of_birth,
+            date_of_birth: this.state.date_of_birth,
             remote: this.state.remote,
             inperson: this.state.inperson,
             address: this.state.address,
@@ -414,7 +414,7 @@ class Profile extends Component {
                                 <span className="black-text"><strong>Personal Information</strong></span>
                                 <div className="divider"></div>
                                     <p>Name: {this.state.first_name}{" "}{this.state.last_name}</p>
-                                    <p>Date of birth: {this.state.Date_of_birth }</p>
+                                    <p>Date of birth: {this.state.date_of_birth }</p>
                                     <p>Remote sessions: {this.state.remote ? "Yes" : "No"}</p>
                                     <p>Presental sessions: {this.state.inperson ? "Yes" : "No"}</p>
                                     <p>Address: {this.state.address}</p>
