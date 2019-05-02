@@ -245,7 +245,7 @@ class Profile extends Component {
                                                         value={this.state.bio}
                                                         onChange={this.onChangeBio}
                                                     ></input>
-                                                    <label htmlFor="bio">Tell us a little about yourself!</label>
+                                                    <label htmlFor="bio" className="active">Tell us a little about yourself!</label>
                                                 </div>
                                             </div>
                                         </form>
@@ -345,7 +345,7 @@ class Profile extends Component {
                                                         onChange={this.onChangePersonal}
                                                         value={this.state.first_name}
                                                     ></input>
-                                                    <label htmlFor="first_name">First Name</label>
+                                                    <label htmlFor="first_name" className="active">First Name</label>
                                                 </div>
                                                 <div className="input-field col s4">
                                                     <input id="last_name"
@@ -354,15 +354,15 @@ class Profile extends Component {
                                                         name="last_name"
                                                         onChange={this.onChangePersonal}
                                                         value={this.state.last_name}></input>
-                                                    <label htmlFor="last_name">Last Name</label>
+                                                    <label className="active" htmlFor="last_name">Last Name</label>
                                                 </div>
                                                 <div className="input-field col s4 browser-default">
-                                                    <input id="Date_of_birth"
+                                                    <input id="date_of_birth"
                                                         type="date"
-                                                        name="Date_of_birth"
+                                                        name="date_of_birth"
                                                         onChange={this.onChangePersonal}
                                                         value={this.state.Date_of_birth}></input>
-                                                    <label htmlFor="Date_of_birth">Birthdate</label>
+                                                    <label htmlFor="date_of_birth">Birthdate</label>
                                                 </div>
                                             </div>
                                             <div className="row">
