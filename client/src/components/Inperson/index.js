@@ -37,25 +37,22 @@ class Inperson extends Component {
                             <ul className="collection grey lighten-5 z-depth-1 round-corners">
                                 <div className="row">
                                     <li className="collection-item avatar valign-wrapper" style={this.collectionStyle}>
-                                        <div className="col s1 m2">
+                                        <div className="col s12 m2">
                                             <div className="valign-wrapper">
                                                 <img src={tutor.profileImage ? tutor.profileImage : `https://via.placeholder.com/150`} alt="" className="circle responsive-img" style={this.imgStyle} ></img>
                                             </div>
                                         </div>    
-                                        <div className="col s7 pull-s1 m6">
+                                        <div className="col s12 pull-s1 m6">
                                             <span className="title"><h5>{tutor.first_name}{" "}{tutor.last_name}</h5></span>
                                             <p>{tutor.bio}</p>
                                         </div>
-                                        <div className="col hide-on-small-only m3">
+                                        <div className="col s12 hide-on-small-only m3">
                                             <ul>
                                                 {tutor.subjects.split(",").map(subject => (
                                                 <li key={subject}>{subject}</li>
                                                 ))}
                                             </ul>
                                         </div>     
-                                        
-                                            {/* <Link to={{pathname: "viewprofile", state: {id:tutor.id}}}   className="waves-light btn modal-trigger right" name={tutor.id} onClick={this.clickHandler} >Contact Me!</Link> */}
-                                        
                                         <Link to={{pathname: "viewprofile", state: {id:tutor.id}}} name={tutor.id} onClick={this.clickHandler}  class="secondary-content"><i class="smaill material-icons">email</i></Link>
                                     </li>
                                 </div>
