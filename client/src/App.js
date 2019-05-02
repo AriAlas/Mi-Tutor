@@ -26,7 +26,6 @@ function App() {
             <Route exact path="/register" component={Register} />
             <Route exact path="/remote" component={Remote} />
             <Route  path="/viewprofile" component={Viewprofile} />
-
           </Switch>
         </div>
       </Router>

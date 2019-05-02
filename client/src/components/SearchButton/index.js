@@ -11,10 +11,8 @@ class SearchButton extends React.Component {
     id="clickSearch" 
     name="action"
     href="#map">
-    
       Search
     </a>
-    
     </div>
   );
   }

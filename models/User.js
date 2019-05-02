@@ -23,7 +23,6 @@ module.exports = function(sequelize, DataTypes) {
               isEmail: true
             }
         },
-
         password: {
             type: DataTypes.STRING,
             allowNull: false
@@ -37,33 +36,24 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             allowNull: true,
             defaultValue: false
-
-
         },
-
         inperson: {
             type: DataTypes.BOOLEAN,
             allowNull: true,
             defaultValue: false
-
-
         },
         subjects: {
             type: DataTypes.STRING,
             allowNull: true
-           
         },
         bio: {
             type: DataTypes.STRING,
             allowNull: true,
             defaultValue: ""
-
-
         },
         address: {
             type: DataTypes.STRING,
             allowNull: true,
-
         },
         profileImage: {
             type: DataTypes.STRING,
